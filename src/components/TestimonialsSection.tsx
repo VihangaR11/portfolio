@@ -7,6 +7,8 @@ interface Testimonial {
   role: string;
   company: string;
   image: string;
+  logo: string;
+  verifiedBy: string;
   text: string;
   rating: number;
 }
@@ -17,6 +19,8 @@ const testimonials: Testimonial[] = [
     role: 'Product Manager',
     company: 'TechCorp Inc.',
     image: 'SJ',
+    logo: '🟦',
+    verifiedBy: 'LinkedIn',
     text: 'Working with Vihanga was an absolute pleasure. His technical expertise and attention to detail resulted in a product that exceeded our expectations.',
     rating: 5
   },
@@ -25,6 +29,8 @@ const testimonials: Testimonial[] = [
     role: 'CTO',
     company: 'StartupHub',
     image: 'MC',
+    logo: '🟢',
+    verifiedBy: 'GitHub',
     text: 'Exceptional developer with great communication skills. Delivered our project on time and handled complex challenges with ease.',
     rating: 5
   },
@@ -33,6 +39,8 @@ const testimonials: Testimonial[] = [
     role: 'Design Lead',
     company: 'Creative Studio',
     image: 'EW',
+    logo: '🟣',
+    verifiedBy: 'Client Ref',
     text: 'Vihanga brings both technical skill and creative thinking to every project. A true professional who goes above and beyond.',
     rating: 5
   }
@@ -126,7 +134,7 @@ export function TestimonialsSection() {
               <div className="flex items-center gap-4">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 flex items-center justify-center">
                   <span className="text-white font-bold text-sm">
-                    {testimonial.image}
+                    {testimonial.logo || testimonial.image}
                   </span>
                 </div>
                 <div>
@@ -135,6 +143,9 @@ export function TestimonialsSection() {
                   </h4>
                   <p className="text-gray-500 text-xs">
                     {testimonial.role} at {testimonial.company}
+                  </p>
+                  <p className="text-cyan-300 text-xs mt-1">
+                    Verified by {testimonial.verifiedBy}
                   </p>
                 </div>
               </div>

@@ -31,14 +31,8 @@ const stats: Stat[] = [
     label: 'Certifications',
     suffix: '+',
     color: 'cyan'
-  },
-  {
-    icon: CoffeeIcon,
-    value: 1000,
-    label: 'Cups of Coffee',
-    suffix: '+',
-    color: 'violet'
   }
+  
 ];
 
 function CountUpAnimation({ value, duration = 2000 }: { value: number; duration?: number }) {

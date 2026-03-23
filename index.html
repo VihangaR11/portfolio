@@ -2,9 +2,70 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d1117" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="apple-touch-icon" href="/vite.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="canonical" href="https://www.vihangarathnayake.com" />
+    <link rel="preload" href="/src/index.tsx" as="script" crossorigin="anonymous" />
+    <link rel="preload" href="/src/index.css" as="style" crossorigin="anonymous" />
+    <link rel="preload" href="/vite.svg" as="image" crossorigin="anonymous" />
+
+    <meta name="description" content="Vihanga Rathnayake portfolio - software engineering, DevOps, data analytics, and product leadership." />
+    <meta name="keywords" content="Vihanga Rathnayake, portfolio, developer, software engineer, React, TypeScript, DevOps" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.vihangarathnayake.com" />
+    <meta property="og:title" content="Vihanga Rathnayake Portfolio" />
+    <meta property="og:description" content="Showcasing projects, skills, and tech leadership in modern web development." />
+    <meta property="og:image" content="https://www.vihangarathnayake.com/vite.svg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.vihangarathnayake.com" />
+    <meta name="twitter:title" content="Vihanga Rathnayake Portfolio" />
+    <meta name="twitter:description" content="Showcasing projects, skills, and tech leadership in modern web development." />
+    <meta name="twitter:image" content="https://www.vihangarathnayake.com/vite.svg" />
+
     <title>Vihanga Rathnayake Portfolio</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "name": "Vihanga Rathnayake",
+            "url": "https://www.vihangarathnayake.com",
+            "sameAs": [
+              "https://github.com/VihangaR11",
+              "https://www.linkedin.com/in/vihangarathnayake"
+            ],
+            "jobTitle": "Software Engineer",
+            "description": "Full-stack developer specializing in React, TypeScript, DevOps, and data-driven engineering.",
+            "image": "https://www.vihangarathnayake.com/vite.svg"
+          },
+          {
+            "@type": "WebSite",
+            "url": "https://www.vihangarathnayake.com",
+            "name": "Vihanga Rathnayake Portfolio",
+            "description": "Portfolio website of Vihanga Rathnayake, showcasing projects and engineering skills.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "VihangaR11"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vihangarathnayake.com/#home"},
+              {"@type": "ListItem", "position": 2, "name": "About", "item": "https://www.vihangarathnayake.com/#about"},
+              {"@type": "ListItem", "position": 3, "name": "Projects", "item": "https://www.vihangarathnayake.com/#projects"}
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

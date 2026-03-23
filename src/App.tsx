@@ -15,9 +15,13 @@ import { BlogSection } from './components/BlogSection';
 import { ContactSection } from './components/ContactSection';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ThemeToggle } from './components/ThemeToggle';
+import { WhatICanBuildSection } from './components/WhatICanBuildSection';
+import LeftSidebar from './components/LeftSidebar';
+
 export function App() {
   return (
     <div className="relative min-h-screen bg-[#0d1117] overflow-x-hidden">
+      <a href="#main-content" className="skip-nav absolute top-0 left-0 m-4 p-2 rounded bg-cyan-500 text-black font-semibold z-50 focus-visible:opacity-100 opacity-0 transition-opacity duration-300">Skip to content</a>
       {/* Background animated orbs */}
       <BackgroundOrbs />
 
@@ -34,6 +38,7 @@ export function App() {
         <StatsSection />
         <SkillsSection />
         <SkillsRadarSection />
+        <WhatICanBuildSection />
         <GitHubSection />
         <ResumeSection />
         <ProjectsSection />
@@ -45,6 +50,9 @@ export function App() {
 
       {/* Scroll to Top Button */}
       <ScrollToTop />
+      <LeftSidebar />
+  {/* Your existing content / HeroSection etc. */}
+
     </div>);
 
 }

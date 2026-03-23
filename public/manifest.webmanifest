@@ -1,0 +1,11 @@
+{
+  "name": "Vihanga Rathnayake Portfolio",
+  "short_name": "VihangaDev",
+  "description": "Portfolio of Vihanga Rathnayake - software engineer and technical leader.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0d1117",
+  "background_color": "#0d1117",
+  "icons": []
+}
