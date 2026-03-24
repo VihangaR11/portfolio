@@ -1,98 +1,88 @@
-# 🚀 Enhanced Portfolio - Vihanga Rathnayake
+Vihanga Rathnayake — Portfolio
 
-A **job-seeking optimized** portfolio with cutting-edge features designed to impress recruiters and stand out from the competition.
+Personal portfolio website of Vihanga Rathnayake, UI/UX Designer & Developer — crafting digital experiences that blend beautiful design with powerful functionality.
 
-## ✨ NEW FEATURES ADDED
+🌐 Live Site: https://vihanga-rathnayake-dev.netlify.app/
 
-### 🔥 **High-Impact Features**
+Screenshots
+<img width="1848" height="902" alt="Screenshot 2026-03-24 103635" src="https://github.com/user-attachments/assets/a334e40f-e427-47d7-8696-43e9a1e0b24f" />
 
-#### 1. **GitHub Activity Dashboard** 📊
-- Real GitHub statistics display
-- Total repositories, stars, and commits
-- Most used languages visualization
-- Animated progress bars
-- Direct link to GitHub profile
 
-**Why it matters:** Shows you're an active coder with real work
+Features
 
-#### 2. **Skills Proficiency Radar** 📈
-- Detailed skill breakdown by category (Frontend, Backend, Database, DevOps)
-- Visual proficiency bars (0-100%)
-- Animated progress on scroll
-- Expertise levels (Expert, Advanced, Intermediate)
-- Color-coded by category
+⚡ Blazing fast performance with Vite
+🎨 Smooth animations powered by Framer Motion
+📱 Fully responsive — mobile, tablet & desktop
+🌙 Dark-themed UI with cyan & violet gradient accents
+🔗 Social media sidebar with live links
+📄 One-click CV download
+🕐 Live clock in the navbar
+♿ Accessibility-friendly with ARIA labels & reduced motion support
+🚀 Auto-deployed via Netlify on every push to main
 
-**Why it matters:** Clear, professional skill presentation
 
-#### 3. **Project Case Studies** 📖
-- Detailed project breakdowns with:
-  - **Problem:** What needed solving
-  - **Solution:** Your approach  
-  - **Technologies:** Full stack used
-  - **Challenges:** Technical obstacles overcome
-  - **Results:** Real impact metrics
-- Click-to-expand modal with full details
-- Visual metrics (Users, Performance, Impact)
-- Links to live demo and GitHub
+Sections
+SectionDescriptionHomeHero section with name, title, and animated introAboutBackground, personal story, and what drives meSkillsTechnologies and tools I work withProjectsShowcase of my work with live linksBlogArticles and thoughts on design & developmentContactGet in touch form and social links
 
-**Why it matters:** Proves problem-solving ability and impact
+Tech Stack
+<img width="1828" height="902" alt="Screenshot 2026-03-24 103812" src="https://github.com/user-attachments/assets/76a6a424-2325-424f-89de-f6e599b520c7" />
 
-#### 4. **Dark/Light Mode Toggle** 🌓
-- Smooth theme switching
-- Persistent preference (localStorage)
-- Beautiful animations
-- Complete color scheme adaptation
 
-**Why it matters:** Modern UX, accessibility
+Getting Started
+Prerequisites
+Make sure you have the following installed:
 
----
+Node.js (v18 or above)
+npm
 
-## 🎯 **What Makes This Portfolio Job-Ready**
+Installation
+bash# 1. Clone the repository
+git clone https://github.com/VihangaR11/portfolio-enhanced.git
 
-### **For Recruiters:**
-1. **Easy CV Download** - One click in navbar
-2. **GitHub Integration** - Verify real work
-3. **Case Studies** - Understand your thinking
-4. **Metrics Everywhere** - Shows impact
-5. **Professional Design** - Modern, clean, impressive
+# 2. Navigate into the project
+cd portfolio-enhanced
 
----
-
-## 📥 **Quick Start**
-
-```bash
+# 3. Install dependencies
 npm install
+
+# 4. Start the development server
 npm run dev
-```
+Open http://localhost:3000 in your browser.
+Build for Production
+bashnpm run build
+Output will be in the dist/ folder.
 
-Visit: http://localhost:5173
+Project Structure
+portfolio-enhanced/
+├── public/
+│   └── Vihanga_Rathnayake_CV.pdf   # CV file for download
+├── src/
+│   ├── components/
+│   │   ├── Navbar.tsx               # Top navigation with mobile menu
+│   │   ├── LeftSideBar.tsx          # Social media links sidebar
+│   │   ├── RippleButton.tsx         # Animated button component
+│   │   └── ...                      # Other section components
+│   ├── App.tsx                      # Main app entry
+│   └── main.tsx                     # Vite entry point
+├── index.html
+├── tailwind.config.js
+├── vite.config.ts
+└── package.json
 
----
+Deployment
+This portfolio is deployed on Netlify with continuous deployment.
+Every push to the main branch automatically triggers a new deploy.
+To deploy manually:
+bashgit add .
+git commit -m "your update message"
+git push origin main
 
-## 🎨 **Customization**
+Contact
+Vihanga Rathnayake
 
-### 1. GitHub Username
-File: `src/components/GitHubSection.tsx` (Line 30)
+🌐 Portfolio: ga-rathnayake-dev.netlify.app
+💼 GitHub: @VihangaR11
 
-### 2. Skills & Levels
-File: `src/components/SkillsRadarSection.tsx` (Line 11-29)
 
-### 3. Project Case Studies
-File: `src/components/ProjectCaseStudiesSection.tsx` (Line 23-75)
-
-### 4. Personal Info
-- HeroSection.tsx - Name & roles
-- ContactSection.tsx - Email, location, social links
-
----
-
-## 🚀 **Deploy**
-
-```bash
-npm run build
-vercel
-```
-
----
-
-**You're ready to land interviews!** 🎉
+License
+This project is open source and available under the MIT License.
