@@ -328,7 +328,7 @@ export function ResumeSection() {
   return (
     <section
       id="resume"
-      className="py-24 md:py-32 relative"
+      className="py-12 sm:py-16 md:py-24 lg:py-32 relative"
       aria-labelledby="resume-heading">
 
       <div className="max-w-6xl mx-auto px-6">

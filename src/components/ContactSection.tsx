@@ -44,7 +44,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-32 relative"
+      className="py-12 sm:py-16 md:py-24 lg:py-32 relative"
       aria-labelledby="contact-heading">
 
       <div className="max-w-6xl mx-auto px-6">

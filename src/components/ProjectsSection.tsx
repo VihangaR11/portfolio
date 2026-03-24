@@ -181,10 +181,10 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="py-24 md:py-32 relative"
+      className="py-12 sm:py-16 md:py-24 lg:py-32 relative"
       aria-labelledby="projects-heading">
 
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           className="text-center mb-16"
@@ -206,7 +206,7 @@ export function ProjectsSection() {
 
           <h2
             id="projects-heading"
-            className="text-3xl md:text-4xl font-bold text-white mb-4">
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
 
             Featured Projects
           </h2>

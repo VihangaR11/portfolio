@@ -43,13 +43,13 @@ export function SkillsRadarSection() {
   return (
     <section
       id="skills-radar"
-      className="py-24 md:py-32 relative"
+      className="py-12 sm:py-16 md:py-24 lg:py-32 relative"
       aria-labelledby="skills-radar-heading"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -57,7 +57,7 @@ export function SkillsRadarSection() {
         >
           <h2
             id="skills-radar-heading"
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4"
           >
             Skills{' '}
             <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">

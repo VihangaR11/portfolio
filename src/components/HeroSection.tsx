@@ -146,8 +146,8 @@ export function HeroSection() {
       className="min-h-screen flex items-center justify-center relative pt-20"
       aria-label="Hero section"
     >
-      <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 lg:py-32">
+        <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-16">
           {/* Content */}
           <motion.div
             className="flex-1 text-center lg:text-left"
@@ -156,7 +156,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <motion.p
-              className="text-cyan-400 font-medium mb-4 text-sm md:text-base tracking-wide"
+              className="text-cyan-400 font-medium mb-4 text-xs sm:text-sm md:text-base tracking-wider"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -165,7 +165,7 @@ export function HeroSection() {
             </motion.p>
 
             <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-6 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -189,7 +189,7 @@ export function HeroSection() {
               <AnimatePresence mode="wait">
                 <motion.p
                   key={currentRoleIndex}
-                  className="text-xl md:text-2xl text-gray-400 font-light"
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 font-light"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -201,7 +201,7 @@ export function HeroSection() {
             </motion.div>
 
             <motion.p
-              className="text-gray-500 max-w-lg mx-auto lg:mx-0 mb-10 leading-relaxed"
+              className="text-gray-500 max-w-lg mx-auto lg:mx-0 mb-6 sm:mb-8 lg:mb-10 leading-relaxed text-sm sm:text-base"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -221,10 +221,10 @@ export function HeroSection() {
                 <div className="text-gray-400">Loading stats...</div>
               ) : (
                 <>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-left">
-                    <div className="p-3 bg-white/5 border border-white/10 rounded-xl">
+                  <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 text-left">
+                    <div className="p-2 sm:p-3 bg-white/5 border border-white/10 rounded-lg sm:rounded-xl">
                       <p className="text-xs text-gray-400 uppercase tracking-wider">Total visits</p>
-                      <p className="text-xl font-semibold text-cyan-300">
+                      <p className="text-lg sm:text-xl font-semibold text-cyan-300">
                         {analytics.totalVisits.toLocaleString()}
                       </p>
                     </div>
@@ -244,7 +244,7 @@ export function HeroSection() {
                     </div>
                   </div>
 
-                  <div className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <div className="mt-2 sm:mt-3 grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3">
                     <div className="p-3 bg-white/5 border border-white/10 rounded-xl">
                       <p className="text-xs text-gray-400 uppercase tracking-wider">Top country</p>
                       <p className="text-sm text-white">{analytics.topCountry}</p>
@@ -268,21 +268,21 @@ export function HeroSection() {
 
             {/* CTAs */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <button
                 onClick={handleScrollToProjects}
-                className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-600 rounded-xl font-semibold text-white transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-cyan-500/25 flex items-center justify-center gap-2"
+                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-violet-600 rounded-lg sm:rounded-xl font-semibold text-white text-sm sm:text-base transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-cyan-500/25 flex items-center justify-center gap-2"
               >
                 View Projects
                 <ArrowDownIcon className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
               </button>
               <button
                 onClick={handleScrollToContact}
-                className="px-8 py-4 border border-white/20 rounded-xl font-semibold text-white transition-all duration-300 hover:bg-white/5 flex items-center justify-center gap-2"
+                className="px-6 sm:px-8 py-3 sm:py-4 border border-white/20 rounded-lg sm:rounded-xl font-semibold text-white text-sm sm:text-base transition-all duration-300 hover:bg-white/5 flex items-center justify-center gap-2"
               >
                 <MailIcon className="w-4 h-4" />
                 Contact Me
@@ -297,10 +297,10 @@ export function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
           >
-            <div className="relative">
+            <div className="relative flex-shrink-0">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-violet-500 rounded-full blur-md opacity-60" />
               <div className="relative p-1 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 animate-glow-border">
-                <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-cyan-500/20 to-violet-500/20 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
+                <div className="w-52 h-52 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-cyan-500/20 to-violet-500/20 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
                   {!imageError ? (
                     <img
                       src="/profile.jpeg"
@@ -309,7 +309,7 @@ export function HeroSection() {
                       onError={() => setImageError(true)}
                     />
                   ) : (
-                    <span className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
+                    <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
                       VR
                     </span>
                   )}

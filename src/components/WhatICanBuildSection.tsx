@@ -127,7 +127,7 @@ export function WhatICanBuildSection() {
 
   return (
     <section className="py-20 px-6" id="what-i-can-build">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,7 +138,7 @@ export function WhatICanBuildSection() {
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent mb-6">
             What I Can Build
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
             Explore industry-specific solutions with recommended tech stacks and live code previews
           </p>
         </motion.div>
@@ -152,7 +152,7 @@ export function WhatICanBuildSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`relative p-6 rounded-xl border transition-all duration-300 cursor-pointer group ${
+              className={`relative p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl border transition-all duration-300 cursor-pointer group ${
                 selectedIndustry?.id === industry.id
                   ? 'border-cyan-400 bg-cyan-400/10 shadow-lg shadow-cyan-400/20'
                   : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10'

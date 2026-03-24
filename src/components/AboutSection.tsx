@@ -55,13 +55,13 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 md:py-32 relative"
+      className="py-12 sm:py-16 md:py-24 lg:py-32 relative"
       aria-labelledby="about-heading"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -69,7 +69,7 @@ export function AboutSection() {
         >
           <h2
             id="about-heading"
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4"
           >
             About{' '}
             <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
@@ -79,7 +79,7 @@ export function AboutSection() {
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-violet-500 mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
           {/* Left: About Text */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -88,7 +88,7 @@ export function AboutSection() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <p className="text-gray-400 leading-relaxed text-lg">
+            <p className="text-gray-400 leading-relaxed text-sm sm:text-base md:text-lg">
               Hi there! I'm <span className="text-cyan-400 font-semibold">Vihanga Rathnayake</span>, 
               a passionate software engineer specializing in full-stack development and DevOps. 
               I love turning complex problems into simple, beautiful, and intuitive solutions.

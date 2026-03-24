@@ -17,6 +17,7 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { ThemeToggle } from './components/ThemeToggle';
 import { WhatICanBuildSection } from './components/WhatICanBuildSection';
 import LeftSidebar from './components/LeftSidebar';
+import RightSideBar from './components/RightSideBar';
 
 export function App() {
   return (
@@ -51,6 +52,7 @@ export function App() {
       {/* Scroll to Top Button */}
       <ScrollToTop />
       <LeftSidebar />
+      <RightSideBar />
   {/* Your existing content / HeroSection etc. */}
 
     </div>);

@@ -105,7 +105,7 @@ export function SkillsSection() {
   return (
     <section
       id="skills"
-      className="py-24 md:py-32 relative"
+      className="py-12 sm:py-16 md:py-24 lg:py-32 relative"
       aria-labelledby="skills-heading">
 
       <div className="max-w-6xl mx-auto px-6">
@@ -142,7 +142,7 @@ export function SkillsSection() {
 
         {/* Skills Grid */}
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
