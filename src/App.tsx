@@ -16,7 +16,7 @@ import { ContactSection } from './components/ContactSection';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ThemeToggle } from './components/ThemeToggle';
 import { WhatICanBuildSection } from './components/WhatICanBuildSection';
-import LeftSidebar from './components/LeftSidebar';
+import LeftSidebar from "./components/LeftSideBar";
 import RightSideBar from './components/RightSideBar';
 
 export function App() {
