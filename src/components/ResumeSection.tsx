@@ -6,7 +6,6 @@ import {
   HeartIcon,
   ServerIcon,
   CodeIcon,
-  LaptopIcon,
   UsersIcon,
   GitBranchIcon,
   Music2Icon,
