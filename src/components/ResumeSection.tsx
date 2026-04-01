@@ -43,12 +43,20 @@ const experienceData: ResumeItem[] = [
 
 const educationData: ResumeItem[] = [
   {
-    title: 'BComp(Hons.) in Information Systems',
-    institution: 'University of Sri Jayewardenepura',
+    title: 'Bachelor of Computing (Hons) in Information Systems',
+    institution: 'Faculty of Computing|University of Sri Jayewardenepura',
     date: 'June 2023 - Present',
     description: 'CGPA: 3.28',
     icon: GraduationCapIcon,
     substackUrl: 'https://open.substack.com/pub/vihangarathnayake/p/from-first-batch-to-final-year-my?r=81itsg&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true'
+  },
+  {
+    title: 'Bacelor of Software Engineering (Hons)',
+    institution: 'Faculty of Engineering Technology|Open University of Sri Lanka',
+    date: 'March 2023 - Present',
+    description: 'CGPA: 3.40',
+    icon: GraduationCapIcon,
+    substackUrl: 'https://open.substack.com/pub/vihangarathnayake/p/my-journey-at-the-open-university?r=81itsg&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true'
   },
   {
     title: 'BSE(Hons.)',
