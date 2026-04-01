@@ -56,7 +56,7 @@ const educationData: ResumeItem[] = [
     date: 'March 2023 - Present',
     description: 'CGPA: 3.40',
     icon: GraduationCapIcon,
-    // substackUrl: ''
+    substackUrl: 'https://open.substack.com/pub/vihangarathnayake/p/my-journey-at-the-open-university?r=81itsg&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true'
   },
   // Add substackUrl to any education items you want
 ];
