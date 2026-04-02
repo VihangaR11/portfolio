@@ -59,12 +59,12 @@ const educationData: ResumeItem[] = [
     substackUrl: 'https://open.substack.com/pub/vihangarathnayake/p/my-journey-at-the-open-university?r=81itsg&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true'
   },
   {
-    title: 'BSE(Hons.)',
-    institution: 'Open University of Sri Lanka',
-    date: 'March 2023 - Present',
-    description: 'CGPA: 3.40',
+    title: 'Diploma in Information Technology',
+    institution: 'ESOFT Metro Campus',
+    date: ' November 2021 - October 2022',
+    description: 'Distinction Pass',
     icon: GraduationCapIcon,
-    substackUrl: 'https://open.substack.com/pub/vihangarathnayake/p/my-journey-at-the-open-university?r=81itsg&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true'
+    substackUrl: 'https://open.substack.com/pub/vihangarathnayake/p/foundation-in-it-pearson-assured?r=81itsg&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true'
   },
   // Add substackUrl to any education items you want
 ];
