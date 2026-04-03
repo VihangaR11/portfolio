@@ -1,84 +1,169 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { GithubIcon, GitBranchIcon, StarIcon, GitCommitIcon, LinkedinIcon, AwardIcon, ShieldCheckIcon } from 'lucide-react';
+import { GitBranchIcon, StarIcon, GitForkIcon, CalendarIcon } from 'lucide-react';
 import { RippleButton } from './RippleButton';
 
+// ─── Inline SVG for GitHub brand icon (removed from lucide-react v1) ───
+const GithubSVG = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+  </svg>
+);
+
+// ─── Types ───────────────────────────────────────────────────────────────
 interface GitHubStats {
   totalRepos: number;
   totalStars: number;
   totalForks: number;
-  totalCommits: number;
   latestCommit: string;
   languages: { name: string; percentage: number; color: string }[];
 }
 
+// ─── Language colour map ──────────────────────────────────────────────────
+const LANG_COLORS: Record<string, string> = {
+  TypeScript:  '#3178c6',
+  JavaScript:  '#f7df1e',
+  Python:      '#3776ab',
+  CSS:         '#563d7c',
+  HTML:        '#e34c26',
+  Java:        '#b07219',
+  'C++':       '#f34b7d',
+  'C#':        '#178600',
+  Go:          '#00add8',
+  Rust:        '#dea584',
+  default:     '#8b8b8b',
+};
+
+const getLangColor = (name: string) => LANG_COLORS[name] ?? LANG_COLORS.default;
+
+// ─── Component ────────────────────────────────────────────────────────────
 export function GitHubSection() {
   const [stats, setStats] = useState<GitHubStats>({
     totalRepos: 0,
     totalStars: 0,
     totalForks: 0,
-    totalCommits: 0,
     latestCommit: 'N/A',
-    languages: []
+    languages: [],
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
   const githubUsername = 'VihangaR11';
 
   useEffect(() => {
+    let cancelled = false;
+
     const fetchStats = async () => {
       try {
-        const response = await fetch(`https://api.github.com/users/${githubUsername}/repos?per_page=100`);
-        const repos = await response.json();
+        setIsLoading(true);
+        setHasError(false);
 
-        if (!Array.isArray(repos)) {
-          throw new Error('Unexpected response format from GitHub API');
-        }
+        const headers: HeadersInit = {};
+        // Add token if available (set VITE_GITHUB_TOKEN in .env to avoid rate limits)
+        const token = import.meta.env.VITE_GITHUB_TOKEN;
+        if (token) headers['Authorization'] = `Bearer ${token}`;
 
-        const totals = repos.reduce(
-          (acc: { stars: number; forks: number; size: number; commitApprox: number; latest: string | null; languageSize: Record<string, number> }, repo: any) => {
-            acc.stars += repo.stargazers_count || 0;
-            acc.forks += repo.forks_count || 0;
-            acc.size += repo.size || 0;
-            acc.commitApprox += repo.forks_count || 0;
-            if (repo.pushed_at) {
-              acc.latest = !acc.latest || new Date(repo.pushed_at) > new Date(acc.latest) ? repo.pushed_at : acc.latest;
-            }
-            if (repo.language) {
-              acc.languageSize[repo.language] = (acc.languageSize[repo.language] || 0) + (repo.size || 0);
-            }
-            return acc;
-          },
-          { stars: 0, forks: 0, size: 0, commitApprox: 0, latest: null, languageSize: {} }
+        const response = await fetch(
+          `https://api.github.com/users/${githubUsername}/repos?per_page=100&sort=updated`,
+          { headers }
         );
 
-        const languageEntries = Object.entries(totals.languageSize);
-        const totalSize = languageEntries.reduce((sum, [, size]) => sum + (size as number), 0);
-        const languages = languageEntries
-          .sort((a, b) => (b[1] as number) - (a[1] as number))
+        // Handle rate limiting gracefully
+        if (response.status === 403 || response.status === 429) {
+          throw new Error('GitHub API rate limit reached. Try again later.');
+        }
+        if (!response.ok) {
+          throw new Error(`GitHub API error: ${response.status}`);
+        }
+
+        const repos: any[] = await response.json();
+
+        if (!Array.isArray(repos)) {
+          throw new Error('Unexpected response from GitHub API');
+        }
+
+        if (cancelled) return;
+
+        // Aggregate stats
+        let stars = 0;
+        let forks = 0;
+        let latestDate: Date | null = null;
+        const langSize: Record<string, number> = {};
+
+        for (const repo of repos) {
+          stars += repo.stargazers_count ?? 0;
+          forks += repo.forks_count ?? 0;
+          if (repo.pushed_at) {
+            const d = new Date(repo.pushed_at);
+            if (!latestDate || d > latestDate) latestDate = d;
+          }
+          if (repo.language && repo.size) {
+            langSize[repo.language] = (langSize[repo.language] ?? 0) + repo.size;
+          }
+        }
+
+        // Build language breakdown
+        const totalSize = Object.values(langSize).reduce((s, v) => s + v, 0);
+        const languages = Object.entries(langSize)
+          .sort(([, a], [, b]) => b - a)
           .slice(0, 5)
           .map(([name, size]) => ({
             name,
-            percentage: totalSize > 0 ? Math.round(((size as number) / totalSize) * 100) : 0,
-            color: name === 'TypeScript' ? '#3178c6' : name === 'JavaScript' ? '#f7df1e' : name === 'Python' ? '#3776ab' : name === 'CSS' ? '#563d7c' : '#8b8b8b'
+            percentage: totalSize > 0 ? Math.round((size / totalSize) * 100) : 0,
+            color: getLangColor(name),
           }));
 
         setStats({
           totalRepos: repos.length,
-          totalStars: totals.stars,
-          totalForks: totals.forks,
-          totalCommits: totals.commitApprox,
-          latestCommit: totals.latest ? new Date(totals.latest).toLocaleDateString() : 'N/A',
-          languages
+          totalStars: stars,
+          totalForks: forks,
+          latestCommit: latestDate
+            ? latestDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+            : 'N/A',
+          languages,
         });
-      } catch (error) {
-        console.error('GitHub fetch failed', error);
+      } catch (err) {
+        if (!cancelled) {
+          if (import.meta.env.DEV) console.error('GitHub fetch error:', err);
+          setHasError(true);
+        }
       } finally {
-        setIsLoading(false);
+        if (!cancelled) setIsLoading(false);
       }
     };
 
     fetchStats();
-  }, [githubUsername]);
+    return () => { cancelled = true; };
+  }, []);
+
+  // ── Stat card data ────────────────────────────────────────────────────
+  const statCards = [
+    {
+      icon: <GithubSVG className="w-8 h-8" />,
+      value: isLoading ? '—' : stats.totalRepos.toString(),
+      label: 'Repositories',
+      accent: 'bg-cyan-500/10 text-cyan-400',
+    },
+    {
+      icon: <StarIcon className="w-8 h-8" />,
+      value: isLoading ? '—' : stats.totalStars.toString(),
+      label: 'Stars Earned',
+      accent: 'bg-violet-500/10 text-violet-400',
+    },
+    {
+      icon: <GitForkIcon className="w-8 h-8" />,
+      value: isLoading ? '—' : stats.totalForks.toString(),
+      label: 'Forks',
+      accent: 'bg-emerald-500/10 text-emerald-400',
+    },
+    {
+      icon: <CalendarIcon className="w-8 h-8" />,
+      value: isLoading ? '—' : stats.latestCommit,
+      label: 'Last Active',
+      accent: 'bg-amber-500/10 text-amber-400',
+      small: true,
+    },
+  ];
 
   return (
     <section
@@ -87,7 +172,8 @@ export function GitHubSection() {
       aria-labelledby="github-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+
+        {/* Section header */}
         <motion.div
           className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -110,7 +196,14 @@ export function GitHubSection() {
           </p>
         </motion.div>
 
-        {/* Stats Grid */}
+        {/* Error banner */}
+        {hasError && (
+          <div className="mb-6 px-4 py-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 text-sm text-center">
+            Could not load GitHub stats — API rate limit may have been reached. Stats will show when available.
+          </div>
+        )}
+
+        {/* Stats grid */}
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12"
           initial={{ opacity: 0 }}
@@ -118,60 +211,27 @@ export function GitHubSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {/* Total Repos */}
-          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-cyan-500/10 rounded-xl">
-                <GitBranchIcon className="w-8 h-8 text-cyan-400" />
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-white">{isLoading ? '...' : stats.totalRepos}</div>
-                <div className="text-gray-400 text-sm">Repositories</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Total Stars */}
-          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-violet-500/10 rounded-xl">
-                <StarIcon className="w-8 h-8 text-violet-400" />
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-white">{isLoading ? '...' : stats.totalStars}</div>
-                <div className="text-gray-400 text-sm">Stars Earned</div>
+          {statCards.map((card) => (
+            <div
+              key={card.label}
+              className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+            >
+              <div className="flex items-center gap-4">
+                <div className={`p-3 rounded-xl ${card.accent}`}>
+                  {card.icon}
+                </div>
+                <div>
+                  <div className={`font-bold text-white ${card.small ? 'text-sm' : 'text-3xl'}`}>
+                    {card.value}
+                  </div>
+                  <div className="text-gray-400 text-sm">{card.label}</div>
+                </div>
               </div>
             </div>
-          </div>
-
-          {/* Total Forks */}
-          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-green-500/10 rounded-xl">
-                <GitBranchIcon className="w-8 h-8 text-green-400" />
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-white">{isLoading ? '...' : stats.totalForks}</div>
-                <div className="text-gray-400 text-sm">Forks</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Latest Commit */}
-          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-amber-500/10 rounded-xl">
-                <ShieldCheckIcon className="w-8 h-8 text-amber-400" />
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-white">{isLoading ? 'Loading...' : stats.latestCommit}</div>
-                <div className="text-gray-400 text-sm">Last Commit</div>
-              </div>
-            </div>
-          </div>
+          ))}
         </motion.div>
 
-        {/* Languages Chart */}
+        {/* Languages chart */}
         <motion.div
           className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8"
           initial={{ opacity: 0, y: 40 }}
@@ -180,104 +240,58 @@ export function GitHubSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-            <GithubIcon className="w-6 h-6 text-cyan-400" />
+            <GithubSVG className="w-6 h-6 text-cyan-400" />
             Most Used Languages
           </h3>
 
-          {/* Language Bars */}
-          <div className="space-y-4">
-            {stats.languages.map((lang, index) => (
-              <div key={lang.name}>
-                <div className="flex justify-between mb-2">
-                  <span className="text-gray-300 font-medium">{lang.name}</span>
-                  <span className="text-gray-400">{lang.percentage}%</span>
+          {isLoading ? (
+            <div className="space-y-4">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="animate-pulse">
+                  <div className="flex justify-between mb-2">
+                    <div className="h-4 bg-white/10 rounded w-24" />
+                    <div className="h-4 bg-white/10 rounded w-8" />
+                  </div>
+                  <div className="h-3 bg-white/5 rounded-full" />
                 </div>
-                <div className="h-3 bg-white/5 rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full rounded-full"
-                    style={{ backgroundColor: lang.color }}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${lang.percentage}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.1 * index }}
-                  />
+              ))}
+            </div>
+          ) : stats.languages.length === 0 ? (
+            <p className="text-gray-500 text-sm text-center py-4">No language data available.</p>
+          ) : (
+            <div className="space-y-4">
+              {stats.languages.map((lang, index) => (
+                <div key={lang.name}>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-gray-300 font-medium">{lang.name}</span>
+                    <span className="text-gray-400">{lang.percentage}%</span>
+                  </div>
+                  <div className="h-3 bg-white/5 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full rounded-full"
+                      style={{ backgroundColor: lang.color }}
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${lang.percentage}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: 0.1 * index, ease: 'easeOut' }}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
-          {/* GitHub Profile Link */}
           <div className="mt-8 text-center">
             <RippleButton
-              onClick={() => window.open(`https://github.com/${githubUsername}`, '_blank')}
+              onClick={() => window.open(`https://github.com/${githubUsername}`, '_blank', 'noopener,noreferrer')}
               className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-violet-600 rounded-xl font-semibold text-white transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-cyan-500/25"
             >
-              <GithubIcon className="w-5 h-5" />
+              <GithubSVG className="w-5 h-5" />
               View Full GitHub Profile
             </RippleButton>
           </div>
         </motion.div>
 
-        {/* Trust & Verification Badges */}
-        <motion.div
-          className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-        >
-          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 flex items-center gap-3">
-            <LinkedinIcon className="w-6 h-6 text-cyan-400" />
-            <div className="text-gray-200 text-sm">
-              LinkedIn Verified
-            </div>
-          </div>
-          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 flex items-center gap-3">
-            <GithubIcon className="w-6 h-6 text-white" />
-            <div className="text-gray-200 text-sm">
-              GitHub Sponsor
-            </div>
-          </div>
-          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 flex items-center gap-3">
-            <AwardIcon className="w-6 h-6 text-yellow-300" />
-            <div className="text-gray-200 text-sm">
-              Certifications (AWS, GCP, PMP)
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="mt-6 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <div className="text-gray-300 text-sm">
-            Total estimated commits taken from activity signals (via public GitHub data, may count forks as commits for visibility). Deep commits can be surfaced with GitHub GraphQL if authenticated.
-          </div>
-        </motion.div>
-
-        {/* Contribution Graph Placeholder */}
-        <motion.div
-          className="mt-8 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <h3 className="text-xl font-bold text-white mb-6">Contribution Activity</h3>
-          <div className="text-center py-8">
-            <p className="text-gray-400 mb-4">
-              To show your real GitHub contribution graph, you can:
-            </p>
-            <ol className="text-gray-400 text-sm space-y-2 text-left max-w-2xl mx-auto">
-              <li>1. Use GitHub's embed: <code className="bg-white/10 px-2 py-1 rounded">github-readme-stats</code></li>
-              <li>2. Fetch from GitHub API and create custom visualization</li>
-              <li>3. Embed GitHub profile README</li>
-            </ol>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

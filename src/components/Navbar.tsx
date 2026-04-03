@@ -9,7 +9,10 @@ const navLinks = [
   { label: 'Resume', href: '#resume' },
   { label: 'Projects', href: '#projects' },
   { label: 'Blog', href: '#blog' },
+  { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
+  { label: 'Timeline', href: '#timeline' },
+  
 ];
 
 export function Navbar() {
