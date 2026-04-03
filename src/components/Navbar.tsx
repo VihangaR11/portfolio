@@ -11,7 +11,7 @@ const navLinks = [
   { label: 'Blog', href: '#blog' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
-  { label: 'Timeline', href: '#timeline' },
+  
   
 ];
 
