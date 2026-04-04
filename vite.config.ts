@@ -3,12 +3,12 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: '/portfolio-enhanced/',    // ✅ ADD THIS LINE
+  base: '/portfolio/',
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+      includeAssets: ['favicon.png', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
         name: 'Vihanga Rathnayake Portfolio',
         short_name: 'VihangaDev',
@@ -16,11 +16,11 @@ export default defineConfig({
         theme_color: '#0d1117',
         background_color: '#0d1117',
         display: 'standalone',
-        scope: '/',
-        start_url: '/',
+        scope: '/portfolio/',
+        start_url: '/portfolio/',
         icons: [
-          { src: '/vite.svg', sizes: '192x192', type: 'image/svg+xml' },
-          { src: '/vite.svg', sizes: '512x512', type: 'image/svg+xml' }
+          { src: '/portfolio/favicon.png', sizes: '192x192', type: 'image/png' },
+          { src: '/portfolio/favicon.png', sizes: '512x512', type: 'image/png' }
         ]
       },
       workbox: {
