@@ -7,41 +7,48 @@ import { SkillsSection } from './components/SkillsSection';
 import { GitHubSection } from './components/GitHubSection';
 import { ResumeSection } from './components/ResumeSection';
 import { ProjectsSection } from './components/ProjectsSection';
-import { ProjectCaseStudiesSection } from './components/ProjectCaseStudiesSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { BlogSection } from './components/BlogSection';
-import { FilmstripGallerySection } from './components/FilmstripGallerySection';
 import { ContactSection } from './components/ContactSection';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ThemeToggle } from './components/ThemeToggle';
-import { WhatICanBuildSection } from './components/WhatICanBuildSection';
 import LeftSidebar from './components/LeftSideBar';
 import RightSideBar from './components/RightSideBar';
-// AchievementsTimeline removed — merged into ResumeSection
+
+// ── Optional sections — uncomment only if the file exists in src/components/ ──
+// import { SkillsRadarSection } from './components/SkillsRadarSection';
+// import { WhatICanBuildSection } from './components/WhatICanBuildSection';
+// import { ProjectCaseStudiesSection } from './components/ProjectCaseStudiesSection';
+// import { TestimonialsSection } from './components/TestimonialsSection';
+// import { BlogSection } from './components/BlogSection';
+// import { FilmstripGallerySection } from './components/FilmstripGallerySection';
 
 export function App() {
   return (
     <div className="relative min-h-screen bg-[#0d1117] overflow-x-hidden">
-      <a href="#main-content" className="skip-nav absolute top-0 left-0 m-4 p-2 rounded bg-cyan-500 text-black font-semibold z-50 focus-visible:opacity-100 opacity-0 transition-opacity duration-300">
+      <a
+        href="#main-content"
+        className="skip-nav absolute top-0 left-0 m-4 p-2 rounded bg-cyan-500 text-black font-semibold z-50 focus-visible:opacity-100 opacity-0 transition-opacity duration-300"
+      >
         Skip to content
       </a>
+
       <BackgroundOrbs />
       <Navbar />
       <ThemeToggle />
 
-      <main>
+      <main id="main-content">
         <HeroSection />
         <AboutSection />
         <StatsSection />
         <SkillsSection />
-        <WhatICanBuildSection />
+        {/* <SkillsRadarSection /> */}
+        {/* <WhatICanBuildSection /> */}
         <GitHubSection />
-        <ResumeSection />        {/* ← Experience + Education + Volunteering + Awards + Certs + Timeline all here */}
+        <ResumeSection />
         <ProjectsSection />
-        <ProjectCaseStudiesSection />
-        <TestimonialsSection />
-        <BlogSection />
-        <FilmstripGallerySection />
+        {/* <ProjectCaseStudiesSection /> */}
+        {/* <TestimonialsSection /> */}
+        {/* <BlogSection /> */}
+        {/* <FilmstripGallerySection /> */}
         <ContactSection />
       </main>
 
