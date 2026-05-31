@@ -8,7 +8,8 @@ const navLinks = [
   { label: 'Skills',   href: '#skills' },
   { label: 'Resume',   href: '#resume' },
   { label: 'Projects', href: '#projects' },
-  { label: 'GitHub',   href: '#github' },
+  { label: 'Blog',     href: '#blog' },
+  { label: 'Gallery',  href: '#gallery' },
   { label: 'Contact',  href: '#contact' },
 ];
 
@@ -29,7 +30,6 @@ export function Navbar() {
     return () => clearInterval(timeInterval);
   }, []);
 
-  // ✅ Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -53,7 +53,6 @@ export function Navbar() {
     const link = document.createElement('a');
     link.href = '/portfolio/Vihanga_Rathnayake_CV.pdf';
     link.download = 'Vihanga_Rathnayake_CV.pdf';
-
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -65,7 +64,7 @@ export function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-gray-900/95 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'
+          isScrolled ? 'bg-[#060d1a]/95 backdrop-blur-xl border-b border-blue-500/10' : 'bg-transparent'
         }`}
         role="navigation"
         aria-label="Main navigation"
@@ -77,7 +76,7 @@ export function Navbar() {
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, '#home')}
-              className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent flex-shrink-0"
+              className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent flex-shrink-0"
             >
               VR
             </a>
@@ -89,7 +88,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-xs lg:text-sm font-medium whitespace-nowrap"
+                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-xs lg:text-sm font-medium whitespace-nowrap"
                 >
                   {link.label}
                 </a>
@@ -106,7 +105,7 @@ export function Navbar() {
               </div>
             </div>
 
-            {/* ✅ Mobile Menu Button - high z-index so it's always clickable */}
+            {/* Mobile Menu Button */}
             <button
               className="lg:hidden p-2 text-gray-400 hover:text-white transition-colors relative z-[60]"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -123,22 +122,21 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* ✅ Fullscreen overlay menu — outside nav so nothing clips it */}
+      {/* Mobile fullscreen overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[55] bg-gray-900 flex flex-col pt-20 px-6 overflow-y-auto lg:hidden">
+        <div className="fixed inset-0 z-[55] bg-[#060d1a] flex flex-col pt-20 px-6 overflow-y-auto lg:hidden">
           <div className="flex flex-col gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-xl font-medium py-4 px-4 rounded-lg hover:bg-white/5 border-b border-white/10"
+                className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-xl font-medium py-4 px-4 rounded-lg hover:bg-blue-500/5 border-b border-blue-500/10"
               >
                 {link.label}
               </a>
             ))}
 
-            {/* Download CV — plain button on mobile (no RippleButton) */}
             <button
               onClick={() => { handleDownloadCV(); setIsMobileMenuOpen(false); }}
               className="flex items-center justify-center gap-2 px-5 py-3 mt-4 bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg font-semibold text-white text-sm hover:brightness-110 transition-all duration-300"
