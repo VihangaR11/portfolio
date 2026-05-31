@@ -1,4 +1,3 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { BackgroundOrbs } from './components/BackgroundOrbs';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
@@ -16,13 +15,9 @@ import { ContactSection } from './components/ContactSection';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ThemeToggle } from './components/ThemeToggle';
 import LeftSidebar from './components/LeftSideBar';
-
 import RightSideBar from './components/RightSideBar';
 
-
-
-// ── Main portfolio layout ─────────────────────────────────────────────────
-function MainLayout() {
+export function App() {
   return (
     <div className="relative min-h-screen bg-[#060d1a] overflow-x-hidden">
       <a
@@ -31,9 +26,11 @@ function MainLayout() {
       >
         Skip to content
       </a>
+
       <BackgroundOrbs />
       <Navbar />
       <ThemeToggle />
+
       <main id="main-content">
         <HeroSection />
         <AboutSection />
@@ -48,39 +45,42 @@ function MainLayout() {
         <FilmstripGallerySection />
         <ContactSection />
       </main>
+
       <ScrollToTop />
       <LeftSidebar />
-      
       <RightSideBar />
+
+      {/* ── Floating business card button ── */}
+      <a
+        href="https://vihangaR11.github.io/portfolio/card"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="View digital business card"
+        style={{
+          position: 'fixed',
+          bottom: '24px',
+          left: '24px',
+          zIndex: 50,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '10px 16px',
+          borderRadius: '12px',
+          border: '1px solid rgba(77,166,255,0.3)',
+          background: 'linear-gradient(135deg, #1e6bc4, #1557a0)',
+          color: '#fff',
+          fontSize: '12px',
+          fontWeight: 600,
+          textDecoration: 'none',
+          boxShadow: '0 8px 24px rgba(30,107,196,0.4)',
+          backdropFilter: 'blur(12px)',
+          transition: 'filter 0.2s',
+        }}
+        onMouseEnter={e => (e.currentTarget.style.filter = 'brightness(1.15)')}
+        onMouseLeave={e => (e.currentTarget.style.filter = 'brightness(1)')}
+      >
+        🪪 My Card
+      </a>
     </div>
-  );
-}
-{/* Floating business card button */}
-
- <a href="https://vihangaR11.github.io/portfolio/card"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="fixed bottom-6 left-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-semibold transition-all hover:brightness-110"
-  style={{
-    background: 'linear-gradient(135deg, #1e6bc4, #1557a0)',
-    borderColor: 'rgba(77,166,255,0.3)',
-    color: '#fff',
-    boxShadow: '0 8px 24px rgba(30,107,196,0.4)',
-    backdropFilter: 'blur(12px)',
-  }}
-  aria-label="View digital business card"
->
-  🪪 My Card
-</a>
-
-// ── App with routing ──────────────────────────────────────────────────────
-export function App() {
-  return (
-    <BrowserRouter basename="/portfolio">
-      <Routes>
-        <Route path="/"     element={<MainLayout />} />
-        <Route path="/card" element={<CardPage />} />
-      </Routes>
-    </BrowserRouter>
   );
 }
