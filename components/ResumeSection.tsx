@@ -181,13 +181,47 @@ const awardsData: ResumeItem[] = [
 // ── Certifications ────────────────────────────────────────────────────────
 const certificationsData: ResumeItem[] = [
   {
-    title: 'AWS Certified Solutions Architect',
+    title: 'SAP Certified Associate — Business Analyst',
+    institution: 'SAP',
+    date: '2025 — In Progress',
+    description: 'Foundation in SAP S/4HANA business processes, configuration, and end-user workflows.',
+    icon: BadgeSVG,
+    tags: ['SAP S/4HANA', 'ERP Configuration', 'Business Processes'],
+    highlight: true,
+  },
+  {
+    title: 'Diploma in Information Technology',
+    institution: 'ESOFT Metro Campus — Pearson Assured',
+    date: 'Oct 2022',
+    description: 'Distinction pass. Networking, programming, database systems, and IT fundamentals.',
+    icon: BadgeSVG,
+    tags: ['Networking', 'Databases', 'Programming'],
+    highlight: true,
+    substackUrl: 'https://open.substack.com/pub/vihangarathnayake/p/foundation-in-it-pearson-assured',
+  },
+  {
+    title: 'AWS Cloud Practitioner Essentials',
     institution: 'Amazon Web Services',
     date: '2024',
-    description: 'Professional certification demonstrating expertise in designing distributed, fault-tolerant systems on AWS.',
+    description: 'Foundational AWS cloud concepts, services, security, and pricing models.',
     icon: BadgeSVG,
-    tags: ['AWS', 'Cloud', 'Architecture'],
-    highlight: true,
+    tags: ['AWS', 'Cloud', 'EC2', 'S3', 'IAM'],
+  },
+  {
+    title: 'Business Analysis Fundamentals',
+    institution: 'LinkedIn Learning',
+    date: '2024',
+    description: 'Requirements gathering, stakeholder management, BPMN process modelling, and use case documentation.',
+    icon: BadgeSVG,
+    tags: ['Requirements', 'BPMN', 'Stakeholder Management'],
+  },
+  {
+    title: 'Project Management Essentials',
+    institution: 'Google / Coursera',
+    date: '2024',
+    description: 'Project lifecycle, Agile methodologies, risk management, and stakeholder communication.',
+    icon: BadgeSVG,
+    tags: ['Agile', 'Scrum', 'Risk Management', 'Project Planning'],
   },
 ];
 
