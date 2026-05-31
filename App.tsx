@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { BackgroundOrbs } from './components/BackgroundOrbs';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
@@ -16,8 +17,10 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { ThemeToggle } from './components/ThemeToggle';
 import LeftSidebar from './components/LeftSideBar';
 import RightSideBar from './components/RightSideBar';
+import CardPage from './pages/CardPage';
 
-export function App() {
+// ── Main portfolio layout ─────────────────────────────────────────────────
+function MainLayout() {
   return (
     <div className="relative min-h-screen bg-[#060d1a] overflow-x-hidden">
       <a
@@ -47,5 +50,17 @@ export function App() {
       <LeftSidebar />
       <RightSideBar />
     </div>
+  );
+}
+
+// ── App with routing ──────────────────────────────────────────────────────
+export function App() {
+  return (
+    <BrowserRouter basename="/portfolio">
+      <Routes>
+        <Route path="/"     element={<MainLayout />} />
+        <Route path="/card" element={<CardPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
