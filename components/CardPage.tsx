@@ -24,42 +24,16 @@ const MediumSVG = ({ className }: { className?: string }) => (
 
 // ── Real QR Code using qrcode library ─────────────────────────────────────
 function QRCanvas({ url, size = 160 }: { url: string; size?: number }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    if (!canvasRef.current) return;
-    QRCode.toCanvas(canvasRef.current, url, {
-      width: size,
-      margin: 1,
-      color: {
-        dark: '#4da6ff',   // sapphire blue modules
-        light: '#060d1a',  // navy background
-      },
-    }).catch(() => {
-      // Fallback: draw styled placeholder if qrcode fails
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
-      ctx.fillStyle = '#060d1a';
-      ctx.fillRect(0, 0, size, size);
-      ctx.fillStyle = '#4da6ff';
-      ctx.font = `bold 14px monospace`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('QR unavailable', size / 2, size / 2);
-    });
-  }, [url, size]);
-
   return (
-    <canvas
-      ref={canvasRef}
+    <img
+      src={`https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(url)}&color=4da6ff&bgcolor=060d1a&format=png`}
+      alt="QR code — scan to visit portfolio"
       width={size}
       height={size}
       className="rounded-xl"
-      aria-label="QR code — scan to visit portfolio"
     />
   );
+  
 }
 
 // ── Links ─────────────────────────────────────────────────────────────────
