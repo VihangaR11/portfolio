@@ -16,8 +16,10 @@ import { ContactSection } from './components/ContactSection';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ThemeToggle } from './components/ThemeToggle';
 import LeftSidebar from './components/LeftSideBar';
+
 import RightSideBar from './components/RightSideBar';
-import CardPage from './pages/CardPage';
+
+
 
 // ── Main portfolio layout ─────────────────────────────────────────────────
 function MainLayout() {
@@ -48,10 +50,28 @@ function MainLayout() {
       </main>
       <ScrollToTop />
       <LeftSidebar />
+      
       <RightSideBar />
     </div>
   );
 }
+{/* Floating business card button */}
+
+ <a href="https://vihangaR11.github.io/portfolio/card"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-6 left-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-semibold transition-all hover:brightness-110"
+  style={{
+    background: 'linear-gradient(135deg, #1e6bc4, #1557a0)',
+    borderColor: 'rgba(77,166,255,0.3)',
+    color: '#fff',
+    boxShadow: '0 8px 24px rgba(30,107,196,0.4)',
+    backdropFilter: 'blur(12px)',
+  }}
+  aria-label="View digital business card"
+>
+  🪪 My Card
+</a>
 
 // ── App with routing ──────────────────────────────────────────────────────
 export function App() {
