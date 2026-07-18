@@ -315,7 +315,7 @@ export function SkillsSection() {
       </div>
     </section>
   );
-};
+}
 
 // Custom Tooltip Component (Only declared once)
 const CustomTooltip = ({ active, payload, color }: any) => {

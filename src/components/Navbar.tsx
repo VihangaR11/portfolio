@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { MenuIcon, XIcon, DownloadIcon } from 'lucide-react';
 import { RippleButton } from './RippleButton';
 
@@ -30,7 +31,6 @@ export function Navbar() {
     return () => clearInterval(timeInterval);
   }, []);
 
-  // ✅ Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -54,7 +54,6 @@ export function Navbar() {
     const link = document.createElement('a');
     link.href = '/portfolio/Vihanga_Rathnayake_CV.pdf';
     link.download = 'Vihanga_Rathnayake_CV.pdf';
-
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -66,7 +65,7 @@ export function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-gray-900/95 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'
+          isScrolled ? 'bg-[#060d1a]/95 backdrop-blur-xl border-b border-blue-500/10' : 'bg-transparent'
         }`}
         role="navigation"
         aria-label="Main navigation"
@@ -78,7 +77,7 @@ export function Navbar() {
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, '#home')}
-              className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent flex-shrink-0"
+              className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent flex-shrink-0"
             >
               VR
             </a>
@@ -90,7 +89,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-xs lg:text-sm font-medium whitespace-nowrap"
+                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-xs lg:text-sm font-medium whitespace-nowrap"
                 >
                   {link.label}
                 </a>
@@ -107,7 +106,7 @@ export function Navbar() {
               </div>
             </div>
 
-            {/* ✅ Mobile Menu Button - high z-index so it's always clickable */}
+            {/* Mobile Menu Button */}
             <button
               className="lg:hidden p-2 text-gray-400 hover:text-white transition-colors relative z-[60]"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -125,39 +124,56 @@ export function Navbar() {
       </nav>
 
       {/* ✅ Fullscreen overlay menu — outside nav so nothing clips it */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[55] bg-gray-900 flex flex-col pt-20 px-6 overflow-y-auto lg:hidden">
-          <div className="flex flex-col gap-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-xl font-medium py-4 px-4 rounded-lg hover:bg-white/5 border-b border-white/10"
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[55] bg-gray-900/95 backdrop-blur-xl flex flex-col pt-20 px-6 overflow-y-auto lg:hidden"
+          >
+            <div className="flex flex-col gap-2">
+              {navLinks.map((link, index) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-xl font-medium py-4 px-4 rounded-lg hover:bg-white/5 border-b border-white/10"
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+
+              {/* Download CV — plain button on mobile (no RippleButton) */}
+              <motion.button
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: navLinks.length * 0.05 }}
+                onClick={() => { handleDownloadCV(); setIsMobileMenuOpen(false); }}
+                className="flex items-center justify-center gap-2 px-5 py-3 mt-4 bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg font-semibold text-white text-sm hover:brightness-110 transition-all duration-300"
               >
-                {link.label}
-              </a>
-            ))}
+                <DownloadIcon className="w-4 h-4" />
+                Download CV
+              </motion.button>
 
-            {/* Download CV — plain button on mobile (no RippleButton) */}
-            <button
-              onClick={() => { handleDownloadCV(); setIsMobileMenuOpen(false); }}
-              className="flex items-center justify-center gap-2 px-5 py-3 mt-4 bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg font-semibold text-white text-sm hover:brightness-110 transition-all duration-300"
-            >
-              <DownloadIcon className="w-4 h-4" />
-              Download CV
-            </button>
-
-            <button
-              onClick={toggleReduceMotion}
-              aria-pressed={reduceMotion}
-              className="w-full mt-3 px-4 py-3 rounded-lg bg-white/10 text-sm text-gray-100 border border-white/20 hover:bg-white/20 transition-all duration-200"
-            >
-              {reduceMotion ? 'Reduced Motion: On' : 'Reduced Motion: Off'}
-            </button>
-          </div>
-        </div>
-      )}
+              <motion.button
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: (navLinks.length + 1) * 0.05 }}
+                onClick={toggleReduceMotion}
+                aria-pressed={reduceMotion}
+                className="w-full mt-3 px-4 py-3 rounded-lg bg-white/10 text-sm text-gray-100 border border-white/20 hover:bg-white/20 transition-all duration-200"
+              >
+                {reduceMotion ? 'Reduced Motion: On' : 'Reduced Motion: Off'}
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

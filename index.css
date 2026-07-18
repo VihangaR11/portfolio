@@ -154,7 +154,7 @@ p, li { font-size: 16.5px; line-height: 1.78; color: #cbd5e1; }
 
 /* Light theme */
 .light-theme body { background-color: #f0f4f8; color: #1a2a3a; }
-.light-theme .bg-\[#060d1a\] { background-color: #f0f4f8 !important; }
+.light-theme .bg-\[\#060d1a\] { background-color: #f0f4f8 !important; }
 .light-theme .text-white     { color: #1a2a3a !important; }
 .light-theme .text-gray-400  { color: #4a6080 !important; }
 .light-theme .bg-white\/5    { background-color: rgba(30,107,196,0.06) !important; }
