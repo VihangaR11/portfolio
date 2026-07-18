@@ -1,88 +1,144 @@
-Vihanga Rathnayake — Portfolio
+# Vihanga Rathnayake — Portfolio
 
-Personal portfolio website of Vihanga Rathnayake, UI/UX Designer & Developer — crafting digital experiences that blend beautiful design with powerful functionality.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a334e40f-e427-47d7-8696-43e9a1e0b24f" alt="Portfolio Screenshot" width="100%">
+</p>
 
-🌐 Live Site: https://vihanga-rathnayake-dev.netlify.app/
+<p align="center">
+  <a href="https://VihangaR11.github.io/portfolio" target="_blank">
+    <img src="https://img.shields.io/badge/Live_Site-View_Portfolio-4da6ff?style=for-the-badge&logo=vercel" alt="Live Site">
+  </a>
+  <img src="https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-5.3-3178C6?style=for-the-badge&logo=typescript" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Vite-5.2-646CFF?style=for-the-badge&logo=vite" alt="Vite">
+  <img src="https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind">
+</p>
 
-Screenshots
-<img width="1848" height="902" alt="Screenshot 2026-03-24 103635" src="https://github.com/user-attachments/assets/a334e40f-e427-47d7-8696-43e9a1e0b24f" />
+> Personal portfolio website of Vihanga Rathnayake, Software Engineer & Product Builder — crafting digital experiences that blend beautiful design with powerful functionality.
 
+---
 
-Features
+## 🚀 Features
 
-⚡ Blazing fast performance with Vite
-🎨 Smooth animations powered by Framer Motion
-📱 Fully responsive — mobile, tablet & desktop
-🌙 Dark-themed UI with cyan & violet gradient accents
-🔗 Social media sidebar with live links
-📄 One-click CV download
-🕐 Live clock in the navbar
-♿ Accessibility-friendly with ARIA labels & reduced motion support
-🚀 Auto-deployed via Netlify on every push to main
+- **Blazing Fast Performance**: Built on top of Vite and React 18 for instantaneous loads.
+- **Premium Animations**: Integrated with Framer Motion and custom HTML5 Canvas for smooth, interactive micro-animations and a stunning particle background.
+- **Fully Responsive**: Flawless experience across mobile, tablet, and desktop devices.
+- **Corporate Sapphire Design**: Custom CSS properties and Tailwind merge to create a deep navy and sapphire aesthetic.
+- **Accessible & SEO-Friendly**: ARIA labels, semantic HTML, and reduced-motion support.
+- **PWA Ready**: Configured with `vite-plugin-pwa` for offline capabilities and caching.
 
+---
 
-Sections
-SectionDescriptionHomeHero section with name, title, and animated introAboutBackground, personal story, and what drives meSkillsTechnologies and tools I work withProjectsShowcase of my work with live linksBlogArticles and thoughts on design & developmentContactGet in touch form and social links
+## 🗺️ Sections Overview
 
-Tech Stack
-<img width="1828" height="902" alt="Screenshot 2026-03-24 103812" src="https://github.com/user-attachments/assets/76a6a424-2325-424f-89de-f6e599b520c7" />
+| Section | Description |
+| ------- | ----------- |
+| **Hero** | Introductory section featuring dynamic text, particle canvas, and call-to-actions. |
+| **About** | Personal background, education, and what drives my engineering passion. |
+| **Skills** | Technologies, tools, and methodologies I specialize in. |
+| **Projects** | Highlighted case studies of my best work with live links and source code. |
+| **Resume & Certs**| Downloadable CV and interactive timelines of my professional journey. |
+| **Blog** | Latest thoughts and articles on software engineering and design. |
+| **Contact** | Secure form and social links to get in touch. |
 
+---
 
-Getting Started
-Prerequisites
-Make sure you have the following installed:
+## 🛠️ Tech Stack
 
-Node.js (v18 or above)
-npm
+<img width="100%" alt="Tech Stack" src="https://github.com/user-attachments/assets/76a6a424-2325-424f-89de-f6e599b520c7" />
 
-Installation
-bash# 1. Clone the repository
-git clone https://github.com/VihangaR11/portfolio-enhanced.git
+- **Framework**: React 18
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS & Vanilla CSS Variables
+- **Animations**: Framer Motion
+- **Build Tool**: Vite
+- **Icons**: Lucide React
+- **Deployment**: GitHub Pages (gh-pages)
 
-# 2. Navigate into the project
-cd portfolio-enhanced
+---
 
-# 3. Install dependencies
-npm install
+## 💻 Getting Started
 
-# 4. Start the development server
-npm run dev
-Open http://localhost:3000 in your browser.
-Build for Production
-bashnpm run build
-Output will be in the dist/ folder.
+### Prerequisites
+Make sure you have the following installed on your machine:
+- Node.js (v18 or above)
+- npm
 
-Project Structure
-portfolio-enhanced/
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/VihangaR11/portfolio.git
+   ```
+
+2. **Navigate into the project**
+   ```bash
+   cd portfolio
+   ```
+
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+   *Open [http://localhost:3000](http://localhost:3000) in your browser.*
+
+### Build for Production
+```bash
+npm run build
+```
+*Output will be generated in the `dist/` directory.*
+
+---
+
+## 📁 Project Structure
+
+```text
+portfolio/
 ├── public/
-│   └── Vihanga_Rathnayake_CV.pdf   # CV file for download
+│   ├── Vihanga_Rathnayake_CV.pdf   # CV file for download
+│   └── profile.jpeg                # Profile Image
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.tsx               # Top navigation with mobile menu
-│   │   ├── LeftSideBar.tsx          # Social media links sidebar
-│   │   ├── RippleButton.tsx         # Animated button component
-│   │   └── ...                      # Other section components
-│   ├── App.tsx                      # Main app entry
-│   └── main.tsx                     # Vite entry point
-├── index.html
-├── tailwind.config.js
-├── vite.config.ts
-└── package.json
+│   │   ├── Navbar.tsx              # Top navigation with mobile menu
+│   │   ├── ParticleCanvas.tsx      # Canvas background logic
+│   │   ├── HeroSection.tsx         # Main landing section
+│   │   └── ...                     # Other UI sections
+│   ├── App.tsx                     # Main app layout
+│   └── index.tsx                   # React DOM entry point
+├── index.html                      # HTML template & SEO meta tags
+├── tailwind.config.js              # Tailwind configuration
+├── vite.config.ts                  # Vite configuration & PWA setup
+└── package.json                    # Dependencies & Scripts
+```
 
-Deployment
-This portfolio is deployed on Netlify with continuous deployment.
-Every push to the main branch automatically triggers a new deploy.
-To deploy manually:
-bashgit add .
-git commit -m "your update message"
-git push origin main
+---
 
-Contact
-Vihanga Rathnayake
+## 🚀 Deployment
 
-🌐 Portfolio: ga-rathnayake-dev.netlify.app
-💼 GitHub: @VihangaR11
+This portfolio is configured to deploy to **GitHub Pages**.
 
+To deploy manually, simply run:
+```bash
+npm run deploy
+```
+*This command runs the build script and pushes the `dist` folder to the `gh-pages` branch.*
 
-License
-This project is open source and available under the MIT License.
+---
+
+## 📬 Contact
+
+**Vihanga Rathnayake**
+- 🌐 **Portfolio**: [VihangaR11.github.io/portfolio](https://VihangaR11.github.io/portfolio)
+- 💼 **GitHub**: [@VihangaR11](https://github.com/VihangaR11)
+- 👔 **LinkedIn**: [Vihanga Rathnayake](https://www.linkedin.com/in/vihangarathnayake)
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
