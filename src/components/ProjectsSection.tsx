@@ -117,18 +117,18 @@ export function ProjectsSection() {
   const [selected, setSelected] = useState<CaseStudy | null>(null);
 
   return (
-    <section id="projects" className="py-20 md:py-28 relative" aria-labelledby="projects-heading">
+    <section id="projects" className="py-20 md:py-24 relative" aria-labelledby="projects-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-14 max-w-3xl"
+          className="mb-12 max-w-3xl mx-auto text-center"
         >
           <p className="text-blue-400 font-mono text-xs tracking-[0.25em] uppercase mb-3">
             Evidence, not decoration
           </p>
-          <h2 id="projects-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5">
+          <h2 id="projects-heading" className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-white mb-4">
             Business analysis & transformation case studies
           </h2>
           <p className="text-gray-400 leading-relaxed">
@@ -148,7 +148,7 @@ export function ProjectsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-2xl border border-white/10 bg-white/[0.035] p-6 flex flex-col hover:border-blue-400/25 transition-colors"
+                className="rounded-2xl border border-white/10 bg-[#0a1424]/80 p-6 lg:p-7 flex flex-col h-full min-h-[27rem] hover:border-blue-400/30 hover:bg-[#0c192c] transition-colors"
               >
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <div className="w-11 h-11 rounded-xl bg-blue-500/12 border border-blue-400/20 flex items-center justify-center">

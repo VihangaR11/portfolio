@@ -63,8 +63,8 @@ export function HeroSection() {
         }}
       />
 
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 py-14 relative z-10 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-14 xl:gap-20">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-12 relative z-10 w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12 xl:gap-16">
           <motion.div
             className="flex-1 text-center lg:text-left order-2 lg:order-1"
             initial={{ opacity: 0, y: 28 }}
@@ -74,7 +74,7 @@ export function HeroSection() {
             <p className="text-blue-400 font-mono text-sm tracking-[0.2em] mb-3">
               Hello, I&apos;m
             </p>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-[5.5rem] font-extrabold leading-[1.02] tracking-tight mb-5">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5rem] font-extrabold leading-[1.02] tracking-tight mb-5">
               <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-blue-700 bg-clip-text text-transparent">
                 Vihanga
               </span>
@@ -113,7 +113,7 @@ export function HeroSection() {
               {quickStats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
-                  className="min-h-20 rounded-2xl border border-white/20 bg-white/[0.025] px-3 py-3 flex flex-col items-center justify-center"
+                  className="min-h-[4.5rem] rounded-xl border border-white/15 bg-white/[0.025] px-3 py-2.5 flex flex-col items-center justify-center"
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.45 + index * 0.08 }}
@@ -197,7 +197,7 @@ export function HeroSection() {
                 className="relative p-1.5 rounded-full"
                 style={{ background: 'linear-gradient(135deg, #4da6ff, #c8a03c, #4da6ff)' }}
               >
-                <div className="rounded-full overflow-hidden bg-gradient-to-br from-blue-500/20 to-blue-700/20 flex items-center justify-center w-[290px] h-[290px] sm:w-[370px] sm:h-[370px] lg:w-[420px] lg:h-[420px] xl:w-[460px] xl:h-[460px]">
+                <div className="rounded-full overflow-hidden bg-gradient-to-br from-blue-500/20 to-blue-700/20 flex items-center justify-center w-[290px] h-[290px] sm:w-[360px] sm:h-[360px] lg:w-[390px] lg:h-[390px] xl:w-[420px] xl:h-[420px]">
                   {!imageError ? (
                     <img
                       src="/portfolio/profile.jpeg"

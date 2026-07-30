@@ -56,31 +56,31 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="py-20 md:py-28 relative overflow-hidden"
+      className="py-20 md:py-24 relative overflow-hidden"
       aria-labelledby="about-heading"
     >
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_10%_45%,rgba(30,107,196,0.09),transparent_30%),radial-gradient(circle_at_95%_5%,rgba(200,160,60,0.08),transparent_28%)]" />
 
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
         <motion.header
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-14 md:mb-16"
+          className="text-center mb-12 md:mb-14"
         >
           <p className="text-blue-400 font-mono text-xs tracking-[0.35em] uppercase mb-4">
             — Who I am
           </p>
           <h2
             id="about-heading"
-            className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight"
+            className="text-3xl sm:text-4xl md:text-[2.75rem] font-extrabold text-white tracking-tight"
           >
             About <span className="text-blue-500">Me</span>
           </h2>
           <span className="block w-28 h-1 rounded-full bg-gradient-to-r from-blue-400 to-blue-700 mx-auto mt-5" />
         </motion.header>
 
-        <div className="grid lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-16 xl:gap-20 items-start">
+        <div className="grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-12 xl:gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -91,12 +91,12 @@ export function AboutSection() {
               Open to work — available for the right opportunity
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-bold text-white leading-snug mb-7">
+            <h3 className="text-2xl sm:text-[1.75rem] font-bold text-white leading-snug mb-6">
               I&apos;m <span className="text-blue-400">Vihanga Rathnayake</span> — a business
               systems analyst who turns operational needs into workable digital solutions.
             </h3>
 
-            <div className="space-y-5 text-gray-400 text-base sm:text-lg leading-relaxed">
+            <div className="space-y-4 text-gray-400 text-base leading-relaxed">
               <p>
                 I&apos;m pursuing dual honours degrees in Information Systems at the University
                 of Sri Jayewardenepura and Software Engineering at the Open University of Sri
@@ -164,7 +164,7 @@ export function AboutSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 + index * 0.07 }}
-                    className="rounded-2xl border border-white/15 bg-white/[0.035] px-5 py-5 flex items-center gap-4 min-h-24 hover:border-blue-400/30 transition-colors"
+                    className="rounded-2xl border border-white/15 bg-white/[0.035] px-5 py-4 flex items-center gap-4 min-h-[5.5rem] hover:border-blue-400/30 transition-colors"
                   >
                     <div
                       className={`w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 ${
@@ -182,7 +182,7 @@ export function AboutSection() {
               })}
             </div>
 
-            <div className="rounded-3xl border border-blue-400/15 bg-[#0b1526]/90 p-6 sm:p-7">
+            <div className="rounded-2xl border border-blue-400/15 bg-[#0b1526]/90 p-6 sm:p-7">
               <div className="flex items-center gap-3 mb-6">
                 <BriefcaseBusinessIcon className="w-5 h-5 text-blue-400" />
                 <h3 className="text-white font-semibold text-lg">What I&apos;m looking for</h3>

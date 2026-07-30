@@ -39,18 +39,27 @@ body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #060d1a;
   color: #dbeafe;
-  line-height: 1.75;
+  line-height: 1.65;
   font-size: 16px;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-h1 { font-size: 4.2rem; line-height: 1.05; font-weight: 800; letter-spacing: -0.04em; }
-h2 { font-size: 3.1rem; line-height: 1.1;  font-weight: 700; letter-spacing: -0.03em; }
-h3 { font-size: 2.1rem; line-height: 1.2;  font-weight: 600; letter-spacing: -0.02em; }
-h4 { font-size: 1.55rem; font-weight: 600; }
-p, li { font-size: 16.5px; line-height: 1.78; color: #cbd5e1; }
+h1 { line-height: 1.04; font-weight: 800; letter-spacing: -0.045em; }
+h2 { line-height: 1.12; font-weight: 700; letter-spacing: -0.035em; }
+h3 { line-height: 1.25; font-weight: 600; letter-spacing: -0.02em; }
+h4 { line-height: 1.35; font-weight: 600; }
+p, li { font-size: 16px; line-height: 1.7; color: #cbd5e1; }
+
+main > section {
+  scroll-margin-top: 72px;
+}
+
+main > section:nth-of-type(even) {
+  background:
+    linear-gradient(180deg, rgba(15, 30, 53, 0.18), rgba(6, 13, 26, 0.02));
+}
 
 /* Skip nav */
 .skip-nav {

@@ -56,30 +56,30 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 lg:py-32 relative">
+    <section id="contact" className="py-20 md:py-24 relative">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-white mb-4">
             Let's <span className="bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent">Connect</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-700 mx-auto rounded-full mb-6" />
-          <p className="text-gray-400 max-w-xl mx-auto text-lg">
+          <p className="text-gray-400 max-w-xl mx-auto text-base">
             Hiring for business analysis, ERP, implementation or digital transformation?
             Let&apos;s discuss how I can contribute.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-16 lg:gap-20">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12">
           {/* Left Column - Info + Map */}
-          <motion.div className="lg:col-span-5 space-y-10" initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+          <motion.div className="lg:col-span-5 space-y-8" initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <div>
-              <h3 className="text-3xl font-semibold text-white mb-6">Get In Touch</h3>
-              <p className="text-gray-400 text-[17px] leading-relaxed">
+              <h3 className="text-2xl font-semibold text-white mb-4">Get In Touch</h3>
+              <p className="text-gray-400 text-base leading-relaxed">
                 I am interested in associate-level opportunities where I can own a
                 defined analysis workstream, support stakeholders, and help deliver
                 practical enterprise or public-sector digital solutions.
@@ -115,7 +115,7 @@ export function ContactSection() {
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.5!2d81.25!3d6.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDUnMDAuMCJOIDgxwrAxNScwMC4wIkU!5e0!3m2!1sen!2slk!4v1700000000000"
                 width="100%"
-                height="300"
+                height="260"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
@@ -127,8 +127,8 @@ export function ContactSection() {
 
           {/* Contact Form */}
           <motion.div className="lg:col-span-7" initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-10 md:p-12">
-              <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="bg-[#0a1424]/80 backdrop-blur-3xl border border-white/10 rounded-2xl p-6 sm:p-8">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-400 mb-2">Your Name</label>
@@ -138,7 +138,7 @@ export function ContactSection() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-gray-500 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-500 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-all"
                       placeholder="John Doe"
                     />
                   </div>
@@ -150,7 +150,7 @@ export function ContactSection() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-gray-500 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-500 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-all"
                       placeholder="you@email.com"
                     />
                   </div>
@@ -163,8 +163,8 @@ export function ContactSection() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={7}
-                    className="w-full bg-white/5 border border-white/10 rounded-3xl px-6 py-5 text-white placeholder-gray-500 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none resize-y transition-all"
+                    rows={6}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none resize-y transition-all"
                     placeholder="Tell me about your project or just say hello..."
                   />
                 </div>
@@ -172,7 +172,7 @@ export function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-2xl font-semibold text-lg text-white flex items-center justify-center gap-3 hover:brightness-110 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full py-4 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl font-semibold text-base text-white flex items-center justify-center gap-3 hover:brightness-110 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
@@ -205,7 +205,7 @@ export function ContactSection() {
         </div>
 
         <motion.footer
-          className="mt-24 pt-10 border-t border-white/10"
+          className="mt-16 pt-8 border-t border-white/10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

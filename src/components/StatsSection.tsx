@@ -10,7 +10,7 @@ const evidence = [
 
 export function StatsSection() {
   return (
-    <section className="py-8 relative" aria-label="Core business analysis evidence">
+    <section className="py-10 md:py-12 relative" aria-label="Core business analysis evidence">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {evidence.map((item, index) => {
@@ -22,7 +22,7 @@ export function StatsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.06 }}
-                className="rounded-2xl border border-white/10 bg-[#0a1628]/75 p-5 flex items-start gap-4"
+                className="rounded-2xl border border-white/10 bg-[#0a1424]/80 p-5 min-h-24 flex items-start gap-4 hover:border-blue-400/25 transition-colors"
               >
                 <div className="w-10 h-10 rounded-xl bg-blue-500/12 flex items-center justify-center flex-shrink-0">
                   <Icon className="w-5 h-5 text-blue-300" />

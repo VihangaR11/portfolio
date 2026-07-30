@@ -480,15 +480,15 @@ export function ResumeSection() {
   // Stats for the header
   const stats = [
     { label: 'Degrees',    value: '2',  color: '#c8a03c' },
-    { label: 'Roles held', value: '15+', color: '#4da6ff' },
+    { label: 'Leadership', value: '5+', color: '#4da6ff' },
     { label: 'Awards',     value: '3',  color: '#f59e0b' },
-    { label: 'Years',      value: '8+', color: '#10b981' },
+    { label: 'Internship', value: '1', color: '#10b981' },
   ];
 
   return (
     <section
       id="resume"
-      className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden"
+      className="py-20 md:py-24 relative overflow-hidden"
       aria-labelledby="resume-heading"
     >
       {/* Ambient background */}
@@ -497,16 +497,16 @@ export function ResumeSection() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-500/4 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ── Header ── */}
-        <motion.div className="text-center mb-10"
+        <motion.div className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}>
           <p className="text-blue-400 font-mono text-xs tracking-[0.3em] uppercase mb-3">— Skills & journey</p>
-          <h2 id="resume-heading" className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 id="resume-heading" className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-white mb-4">
             My{' '}
             <span className="bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent">
               Resume

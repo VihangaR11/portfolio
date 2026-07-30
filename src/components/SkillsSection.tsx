@@ -60,18 +60,18 @@ const tools = [
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-20 md:py-28 relative" aria-labelledby="skills-heading">
+    <section id="skills" className="py-20 md:py-24 relative" aria-labelledby="skills-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="text-center mb-12"
         >
           <p className="text-blue-400 font-mono text-xs tracking-[0.25em] uppercase mb-3">
             Capability portfolio
           </p>
-          <h2 id="skills-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5">
+          <h2 id="skills-heading" className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-white mb-4">
             Skills aligned to associate-level delivery
           </h2>
           <p className="text-gray-400 max-w-3xl mx-auto">
@@ -80,7 +80,7 @@ export function SkillsSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
           {capabilityGroups.map((group, index) => {
             const Icon = group.icon;
             return (
@@ -90,13 +90,13 @@ export function SkillsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.06 }}
-                className="rounded-2xl border border-white/10 bg-white/[0.035] p-6 hover:border-blue-400/25 transition-colors"
+                className="rounded-2xl border border-white/10 bg-[#0a1424]/80 p-6 lg:p-7 min-h-[15.5rem] hover:border-blue-400/30 hover:bg-[#0c192c] transition-colors"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/12 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/12 border border-blue-400/20 flex items-center justify-center">
                     <Icon className="w-5 h-5 text-blue-300" />
                   </div>
-                  <h3 className="text-white font-semibold text-lg">{group.title}</h3>
+                  <h3 className="text-white font-semibold text-xl">{group.title}</h3>
                 </div>
                 <p className="text-gray-500 text-sm leading-relaxed mb-5">{group.description}</p>
                 <div className="flex flex-wrap gap-2">

@@ -168,14 +168,14 @@ export function GitHubSection() {
   return (
     <section
       id="github"
-      className="py-12 sm:py-16 md:py-24 lg:py-32 relative"
+      className="py-20 md:py-24 relative"
       aria-labelledby="github-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section header */}
         <motion.div
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -183,7 +183,7 @@ export function GitHubSection() {
         >
           <h2
             id="github-heading"
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4"
+            className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-white mb-4"
           >
             GitHub{' '}
             <span className="bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent">
@@ -214,7 +214,7 @@ export function GitHubSection() {
           {statCards.map((card) => (
             <div
               key={card.label}
-              className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+              className="bg-[#0a1424]/80 backdrop-blur-lg border border-white/10 rounded-2xl p-5 min-h-24 hover:border-blue-400/30 hover:bg-[#0c192c] transition-all duration-300"
             >
               <div className="flex items-center gap-4">
                 <div className={`p-3 rounded-xl ${card.accent}`}>
@@ -233,7 +233,7 @@ export function GitHubSection() {
 
         {/* Languages chart */}
         <motion.div
-          className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8"
+          className="bg-[#0a1424]/80 backdrop-blur-lg border border-white/10 rounded-2xl p-6 sm:p-8"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
