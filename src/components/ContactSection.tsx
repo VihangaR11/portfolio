@@ -69,8 +69,8 @@ export function ContactSection() {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-700 mx-auto rounded-full mb-6" />
           <p className="text-gray-400 max-w-xl mx-auto text-lg">
-            Have a project in mind? Want to collaborate? Or just say hello? 
-            I'm always excited to hear from you.
+            Hiring for business analysis, ERP, implementation or digital transformation?
+            Let&apos;s discuss how I can contribute.
           </p>
         </motion.div>
 
@@ -80,8 +80,9 @@ export function ContactSection() {
             <div>
               <h3 className="text-3xl font-semibold text-white mb-6">Get In Touch</h3>
               <p className="text-gray-400 text-[17px] leading-relaxed">
-                Whether you're looking for a developer, want to discuss opportunities, 
-                or just want to chat about technology — I'm all ears.
+                I am interested in associate-level opportunities where I can own a
+                defined analysis workstream, support stakeholders, and help deliver
+                practical enterprise or public-sector digital solutions.
               </p>
             </div>
 

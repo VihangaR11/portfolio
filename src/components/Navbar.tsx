@@ -5,12 +5,10 @@ import { RippleButton } from './RippleButton';
 
 const navLinks = [
   { label: 'Home',     href: '#home' },
-  { label: 'About',    href: '#about' },
-  { label: 'Skills',   href: '#skills' },
-  { label: 'Resume',   href: '#resume' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Blog',     href: '#blog' },
-  { label: 'Gallery',  href: '#gallery' },
+  { label: 'Profile',  href: '#about' },
+  { label: 'Capabilities', href: '#skills' },
+  { label: 'Experience', href: '#resume' },
+  { label: 'Case Studies', href: '#projects' },
   { label: 'Contact',  href: '#contact' },
 ];
 
@@ -52,7 +50,7 @@ export function Navbar() {
 
   const handleDownloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/portfolio/Vihanga_Rathnayake_CV.pdf';
+    link.href = '/portfolio/portfolio/CV_Vihanga%20Rathnayake.pdf';
     link.download = 'Vihanga_Rathnayake_CV.pdf';
     document.body.appendChild(link);
     link.click();

@@ -1,239 +1,167 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowDownIcon, MailIcon, DownloadIcon, MapPinIcon } from 'lucide-react';
+import { motion } from 'framer-motion';
+import {
+  ArrowDownIcon,
+  BriefcaseBusinessIcon,
+  DownloadIcon,
+  MapPinIcon,
+  WorkflowIcon,
+} from 'lucide-react';
 import { ParticleCanvas } from './ParticleCanvas';
 
-const roles = [
-  'Full-Stack Developer',
-  'UI/UX Designer',
-  'DevOps Engineer',
-  'Creative Technologist',
-  'Software Engineer',
+const capabilities = [
+  'Requirements Engineering',
+  'BPMN & BPR',
+  'Systems Analysis',
+  'ERP / Odoo',
+  'UAT & Validation',
+  'Stakeholder Facilitation',
 ];
 
-const techStack = [
-  { name: 'React',      color: '#4da6ff' },
-  { name: 'TypeScript', color: '#1e6bc4' },
-  { name: 'Tailwind',   color: '#4da6ff' },
-  { name: 'Node.js',    color: '#68a063' },
-  { name: 'AWS',        color: '#f59e0b' },
-  { name: 'Vite',       color: '#1e6bc4' },
+const proofPoints = [
+  { value: '2', label: 'Honours degrees' },
+  { value: 'GovTech', label: 'Transformation exposure' },
+  { value: 'BPMN', label: 'Process modelling' },
+  { value: 'ERP', label: 'Functional pathway' },
 ];
 
-const quickStats = [
-  { value: '2',  label: 'Degrees',    color: '#c8a03c' },
-  { value: '3+', label: 'Awards',     color: '#f59e0b' },
-  { value: '5+', label: 'Leadership', color: '#10b981' },
-  { value: '8+', label: 'Years exp.', color: '#4da6ff' },
-];
-
-
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  HERO SECTION
-// ═══════════════════════════════════════════════════════════════════════════
 export function HeroSection() {
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [imageError, setImageError] = useState(false);
-  const sectionRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  });
-  const imageY   = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 40]);
-  const opacity  = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRoleIndex(prev => (prev + 1) % roles.length);
-    }, 2800);
-    return () => clearInterval(interval);
-  }, []);
-
-  const scrollTo = (id) => {
+  const scrollTo = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section
-      ref={sectionRef}
       id="home"
-      className="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden"
-      aria-label="Hero section"
+      className="min-h-screen flex items-center relative pt-20 overflow-hidden"
+      aria-label="Introduction"
     >
-      {/* Particle constellation */}
       <ParticleCanvas />
-
-      {/* Vignette to keep text readable */}
       <div
         className="absolute inset-0 pointer-events-none z-[1]"
-        style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(13,17,23,0.6) 100%)' }}
+        style={{
+          background:
+            'radial-gradient(ellipse at 65% 35%, rgba(30,107,196,0.12), transparent 38%), radial-gradient(ellipse at center, transparent 35%, rgba(6,13,26,0.78) 100%)',
+        }}
       />
 
-      {/* Ambient orbs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-[1]">
-        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-500/6 rounded-full blur-3xl animate-float-1" />
-        <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-amber-500/6 rounded-full blur-3xl animate-float-2" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 xl:gap-20">
-
-          {/* LEFT — Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 w-full">
+        <div className="grid lg:grid-cols-[1.25fr_0.75fr] gap-12 lg:gap-20 items-center">
           <motion.div
-            className="flex-1 text-center lg:text-left order-2 lg:order-1"
-            style={{ y: contentY, opacity }}
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65 }}
           >
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-medium mb-6"
-              style={{ background: 'rgba(16,185,129,0.1)', borderColor: 'rgba(16,185,129,0.3)', color: '#10b981' }}
-              initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-              Available for opportunities · Sri Lanka
-              <MapPinIcon className="w-3 h-3 opacity-60" />
-            </motion.div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 text-emerald-300 text-xs font-medium mb-7">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              Open to associate-level opportunities
+              <MapPinIcon className="w-3.5 h-3.5" />
+            </div>
 
-            <motion.p className="text-blue-400 font-mono text-sm tracking-[0.2em] mb-3"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
-              Hello, I'm
-            </motion.p>
+            <p className="text-blue-400 font-mono text-sm tracking-[0.2em] uppercase mb-3">
+              Business systems · ERP · Digital transformation
+            </p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold leading-[1.04] tracking-tight text-white mb-6">
+              I turn complex workflows into{' '}
+              <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-amber-400 bg-clip-text text-transparent">
+                practical digital systems.
+              </span>
+            </h1>
+            <p className="text-gray-300 text-lg sm:text-xl font-medium mb-4">
+              Vihanga Rathnayake — Business Systems Analyst & Digital Transformation Professional
+            </p>
+            <p className="text-gray-400 max-w-2xl leading-relaxed mb-8">
+              I analyse As-Is operations, facilitate stakeholder discovery, model To-Be
+              processes, define clear requirements, and help teams move from organizational
+              problems to secure, implementable solutions. My software engineering background
+              helps me communicate effectively with both decision-makers and technical teams.
+            </p>
 
-            <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold mb-4 leading-[1.1] tracking-tight"
-              initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
-            >
-              <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-blue-700 bg-clip-text text-transparent">Vihanga</span>
-              <br />
-              <span className="bg-gradient-to-r from-amber-500 via-amber-400 to-blue-400 bg-clip-text text-transparent">Rathnayake</span>
-            </motion.h1>
-
-            <motion.div className="h-9 mb-5 overflow-hidden"
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}>
-              <AnimatePresence mode="wait">
-                <motion.div key={currentRoleIndex}
-                  className="flex items-center justify-center lg:justify-start gap-3"
-                  initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.4 }}>
-                  <span className="w-8 h-px flex-shrink-0" style={{ background: 'linear-gradient(to right, #4da6ff, transparent)' }} />
-                  <span className="text-lg sm:text-xl text-gray-300 font-light tracking-wide">{roles[currentRoleIndex]}</span>
-                </motion.div>
-              </AnimatePresence>
-            </motion.div>
-
-            <motion.p className="text-gray-400 max-w-lg mx-auto lg:mx-0 mb-6 leading-relaxed text-sm sm:text-base"
-              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}>
-              Undergraduate at <span className="text-blue-400 font-medium">USJ</span> &{' '}
-              <span className="text-amber-400 font-medium">OUSL</span> — building polished,
-              accessible web experiences with React, TypeScript, and cloud technologies.
-              Presidential award winner. Community builder. Always shipping.
-            </motion.p>
-
-            <motion.div className="grid grid-cols-4 gap-2 sm:gap-3 mb-7 max-w-sm mx-auto lg:mx-0"
-              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.55 }}>
-              {quickStats.map(s => (
-                <div key={s.label} className="text-center rounded-xl border border-white/8 py-3 px-1"
-                  style={{ background: 'rgba(255,255,255,0.04)' }}>
-                  <div className="text-xl sm:text-2xl font-bold font-mono" style={{ color: s.color }}>{s.value}</div>
-                  <div className="text-gray-600 text-[10px] mt-0.5 leading-tight">{s.label}</div>
-                </div>
+            <div className="flex flex-wrap gap-2 mb-8">
+              {capabilities.map((capability) => (
+                <span
+                  key={capability}
+                  className="px-3 py-1.5 rounded-full border border-blue-400/20 bg-blue-400/10 text-blue-200 text-xs font-medium"
+                >
+                  {capability}
+                </span>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8"
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>
-              {techStack.map((tech, i) => (
-                <motion.span key={tech.name}
-                  className="px-3 py-1 rounded-full text-xs font-medium border"
-                  style={{ borderColor: `${tech.color}30`, background: `${tech.color}12`, color: tech.color }}
-                  initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.6 + i * 0.05 }}>
-                  {tech.name}
-                </motion.span>
-              ))}
-            </motion.div>
-
-            <motion.div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
-              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.7 }}>
-              <button onClick={() => scrollTo('#projects')}
-                className="group px-7 py-3.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl font-semibold text-white text-sm transition-all duration-300 hover:brightness-110 hover:shadow-xl hover:shadow-blue-500/25 flex items-center justify-center gap-2">
-                View My Work
-                <ArrowDownIcon className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => scrollTo('#projects')}
+                className="px-7 py-3.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl font-semibold text-white text-sm hover:brightness-110 transition-all flex items-center justify-center gap-2"
+              >
+                Explore Case Studies
+                <ArrowDownIcon className="w-4 h-4" />
               </button>
-              <a href="/portfolio/Vihanga_Rathnayake_CV.pdf" download
-                className="px-7 py-3.5 border border-white/15 rounded-xl font-semibold text-white text-sm transition-all duration-300 hover:bg-white/8 hover:border-white/25 flex items-center justify-center gap-2">
-                <DownloadIcon className="w-4 h-4" /> Download CV
+              <a
+                href="/portfolio/portfolio/CV_Vihanga%20Rathnayake.pdf"
+                download
+                className="px-7 py-3.5 border border-white/15 bg-white/5 rounded-xl font-semibold text-white text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+              >
+                <DownloadIcon className="w-4 h-4" />
+                Download CV
               </a>
-              <button onClick={() => scrollTo('#contact')}
-                className="px-7 py-3.5 border border-blue-500/25 rounded-xl font-semibold text-blue-400 text-sm transition-all duration-300 hover:bg-blue-500/8 hover:border-blue-500/40 flex items-center justify-center gap-2">
-                <MailIcon className="w-4 h-4" /> Hire Me
+              <button
+                onClick={() => scrollTo('#contact')}
+                className="px-7 py-3.5 border border-amber-400/20 bg-amber-400/10 rounded-xl font-semibold text-amber-200 text-sm hover:bg-amber-400/15 transition-all flex items-center justify-center gap-2"
+              >
+                <BriefcaseBusinessIcon className="w-4 h-4" />
+                Discuss a Role
               </button>
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* RIGHT — Profile image */}
-          <motion.div className="flex-shrink-0 order-1 lg:order-2" style={{ y: imageY }}
-            initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}>
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-full opacity-20 blur-xl"
-                style={{ background: 'conic-gradient(from 0deg, #4da6ff, #c8a03c, #4da6ff)' }} />
-              <motion.div className="absolute -inset-3 rounded-full border-2 border-dashed opacity-20"
-                style={{ borderColor: '#4da6ff' }} animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }} />
-              <div className="relative p-1.5 rounded-full animate-glow-border"
-                style={{ background: 'linear-gradient(135deg, #4da6ff, #c8a03c, #4da6ff)' }}>
-                <div className="rounded-full overflow-hidden bg-gradient-to-br from-blue-500/20 to-blue-700/20 flex items-center justify-center"
-                  style={{ width: '360px', height: '360px' }}>
-                  {!imageError ? (
-                    <img src="/portfolio/profile.jpeg" alt="Vihanga Rathnayake — Software Engineer"
-                      className="w-full h-full object-cover object-top rounded-full"
-                      width="360" height="360"
-                      fetchPriority="high"
-                      loading="eager"
-                      onError={() => setImageError(true)} />
-                  ) : (
-                    <div className="text-center">
-                      <span className="text-8xl font-extrabold bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent block">VR</span>
-                      <p className="text-xs text-gray-400 mt-2 tracking-widest font-mono">VIHANGA RATHNAYAKE</p>
-                    </div>
-                  )}
+          <motion.aside
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="relative"
+            aria-label="Professional focus"
+          >
+            <div className="absolute -inset-8 bg-blue-500/10 blur-3xl rounded-full" />
+            <div className="relative rounded-3xl border border-white/10 bg-[#0a1628]/90 backdrop-blur-xl p-6 sm:p-8 shadow-2xl">
+              <div className="flex items-center gap-3 mb-7">
+                <div className="w-11 h-11 rounded-xl bg-blue-500/15 border border-blue-400/20 flex items-center justify-center">
+                  <WorkflowIcon className="w-5 h-5 text-blue-300" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider">Target pathway</p>
+                  <h2 className="text-white font-semibold">Business analysis to transformation</h2>
                 </div>
               </div>
 
-              <motion.div className="absolute -bottom-2 -right-2 flex items-center gap-2 px-3 py-2 rounded-xl border text-xs font-semibold"
-                style={{ background: 'rgba(8,12,16,0.95)', borderColor: 'rgba(16,185,129,0.4)', color: '#10b981', backdropFilter: 'blur(12px)' }}
-                initial={{ opacity: 0, scale: 0.8, y: 10 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ delay: 1, duration: 0.5 }}>
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> Open to work
-              </motion.div>
+              <div className="space-y-3 mb-7">
+                {[
+                  'Associate Business Analyst',
+                  'Business / Systems Analyst',
+                  'Associate Functional Consultant',
+                  'Implementation or Solutions Analyst',
+                ].map((role, index) => (
+                  <div
+                    key={role}
+                    className="flex items-center gap-3 p-3 rounded-xl border border-white/10 bg-white/[0.03]"
+                  >
+                    <span className="w-7 h-7 rounded-lg bg-amber-400/10 text-amber-300 text-xs font-mono flex items-center justify-center">
+                      0{index + 1}
+                    </span>
+                    <span className="text-sm text-gray-300">{role}</span>
+                  </div>
+                ))}
+              </div>
 
-              <motion.div className="absolute -top-2 -left-2 flex items-center gap-2 px-3 py-2 rounded-xl border text-xs font-medium"
-                style={{ background: 'rgba(8,12,16,0.95)', borderColor: 'rgba(30,107,196,0.3)', color: '#4da6ff', backdropFilter: 'blur(12px)' }}
-                initial={{ opacity: 0, scale: 0.8, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.5 }}>
-                <MapPinIcon className="w-3 h-3" /> Sri Lanka
-              </motion.div>
-
-              <motion.div className="absolute top-1/2 -right-6 -translate-y-1/2 flex items-center gap-2 px-3 py-2 rounded-xl border text-xs font-medium whitespace-nowrap"
-                style={{ background: 'rgba(8,12,16,0.95)', borderColor: 'rgba(245,158,11,0.3)', color: '#f59e0b', backdropFilter: 'blur(12px)' }}
-                initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.2, duration: 0.5 }}>
-                🏅 Presidential Medalist
-              </motion.div>
-
-              <div className="absolute -top-5 -right-5 w-10 h-10 bg-blue-400 rounded-full blur-md opacity-40 animate-pulse" />
-              <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-amber-500 rounded-full blur-md opacity-40 animate-pulse" style={{ animationDelay: '1s' }} />
+              <div className="grid grid-cols-2 gap-3">
+                {proofPoints.map((point) => (
+                  <div key={point.label} className="rounded-xl bg-white/[0.035] border border-white/10 p-3">
+                    <div className="text-blue-300 font-bold text-sm">{point.value}</div>
+                    <div className="text-gray-500 text-[11px] mt-1">{point.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </motion.div>
+          </motion.aside>
         </div>
-
-        {/* Scroll indicator */}
-        <motion.div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
-          onClick={() => scrollTo('#about')}>
-          <span className="text-gray-600 text-xs font-mono tracking-widest">scroll</span>
-          <div className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center pt-1.5">
-            <motion.div className="w-1 h-2 rounded-full bg-blue-400"
-              animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }} />
-          </div>
-        </motion.div>
       </div>
     </section>
   );

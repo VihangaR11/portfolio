@@ -4,7 +4,6 @@ import {
   BriefcaseIcon,
   GraduationCapIcon,
   HeartIcon,
-  ServerIcon,
   CodeIcon,
   UsersIcon,
   TrophyIcon,
@@ -45,18 +44,19 @@ interface ResumeItem {
 // ── Experience ────────────────────────────────────────────────────────────
 const experienceData: ResumeItem[] = [
   {
-    title: 'DevOps Engineer',
-    description: 'Experienced in deploying full-stack applications on AWS using CI/CD pipelines, GitHub Actions, and Docker. Passionate about automating workflows and ensuring reliable, scalable deployments.',
-    icon: ServerIcon,
-    tags: ['AWS', 'CI/CD', 'Docker', 'GitHub Actions'],
+    title: 'Digital Transformation & Business Analysis Intern',
+    institution: 'NAPVCW — Digital Case Management Initiative',
+    date: 'Current',
+    description: 'Contributing to the analysis and redesign of sensitive government workflows through policy and SOP review, stakeholder discovery, As-Is and To-Be process modelling, gap analysis, requirements documentation, use cases, roles and permissions, prototype thinking, and implementation planning.',
+    icon: BriefcaseIcon,
+    tags: ['Requirements Engineering', 'BPMN', 'BPR', 'Systems Analysis', 'GovTech'],
     highlight: true,
   },
   {
-    title: 'Full-Stack Developer',
-    description: 'Hands-on experience building web applications using MERN stack, Next.js, Laravel, and pure HTML/CSS/JavaScript. Focus on performance, accessibility, and clean architecture.',
+    title: 'Technical Systems & Prototyping Experience',
+    description: 'Use React, TypeScript, FastAPI, PostgreSQL, cloud and deployment tools to test ideas, understand technical feasibility, and communicate effectively with developers, QA teams and solution architects.',
     icon: CodeIcon,
-    tags: ['React', 'TypeScript', 'Node.js', 'Laravel'],
-    highlight: true,
+    tags: ['React', 'TypeScript', 'FastAPI', 'PostgreSQL', 'AWS'],
   },
 ];
 
@@ -635,7 +635,7 @@ export function ResumeSection() {
         {/* ── Download CV ── */}
         <motion.div className="text-center mt-12"
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-          <a href="/portfolio/Vihanga_Rathnayake_CV.pdf" download
+          <a href="/portfolio/portfolio/CV_Vihanga%20Rathnayake.pdf" download
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-blue-500/25"
             style={{ background: 'linear-gradient(135deg, #4da6ff, #c8a03c)' }}>
             <CalendarIcon className="w-4 h-4" />
