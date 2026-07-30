@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowDownIcon,
   BriefcaseBusinessIcon,
@@ -9,16 +9,40 @@ import {
 import { ParticleCanvas } from './ParticleCanvas';
 
 const capabilities = [
-  'Requirements Engineering',
-  'BPMN & BPR',
+  'BPMN',
+  'Requirements',
   'Systems Analysis',
   'ERP / Odoo',
-  'UAT & Validation',
-  'Stakeholder Facilitation',
+  'UAT',
+  'Stakeholder Workshops',
+];
+
+const roles = [
+  'Digital Transformation & BA Intern',
+  'Business Systems Analyst',
+  'Requirements & Process Analyst',
+  'ERP Functional Consultant',
+  'Implementation Analyst',
+];
+
+const quickStats = [
+  { value: '2', label: 'Degrees' },
+  { value: '1', label: 'GovTech Internship' },
+  { value: '3', label: 'Case Studies' },
+  { value: '5+', label: 'Leadership Roles' },
 ];
 
 export function HeroSection() {
   const [imageError, setImageError] = useState(false);
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setRoleIndex((current) => (current + 1) % roles.length);
+    }, 2800);
+
+    return () => window.clearInterval(interval);
+  }, []);
 
   const scrollTo = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -39,24 +63,18 @@ export function HeroSection() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 xl:gap-20">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 py-14 relative z-10 w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-14 xl:gap-20">
           <motion.div
             className="flex-1 text-center lg:text-left order-2 lg:order-1"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 text-emerald-300 text-xs font-medium mb-7">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Open to associate-level opportunities
-              <MapPinIcon className="w-3.5 h-3.5" />
-            </div>
-
             <p className="text-blue-400 font-mono text-sm tracking-[0.2em] mb-3">
               Hello, I&apos;m
             </p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.08] tracking-tight mb-4">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-[5.5rem] font-extrabold leading-[1.02] tracking-tight mb-5">
               <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-blue-700 bg-clip-text text-transparent">
                 Vihanga
               </span>
@@ -65,21 +83,68 @@ export function HeroSection() {
                 Rathnayake
               </span>
             </h1>
-            <p className="text-gray-300 text-lg sm:text-xl font-light tracking-wide mb-5">
-              Business Systems Analyst & Digital Transformation Professional
-            </p>
-            <p className="text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-7">
-              I analyse As-Is operations, facilitate stakeholder discovery, model To-Be
-              processes, define clear requirements, and help teams move from organizational
-              problems to secure, implementable solutions. My software engineering background
-              helps me communicate effectively with both decision-makers and technical teams.
+            <div
+              className="h-9 mb-6 flex items-center justify-center lg:justify-start gap-4"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              <span className="w-10 h-px bg-gradient-to-r from-blue-400 to-transparent" />
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={roles[roleIndex]}
+                  className="text-gray-200 text-lg sm:text-xl font-light tracking-wide"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {roles[roleIndex]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+            <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-7">
+              Undergraduate at <span className="font-semibold text-blue-400">USJ</span> &amp;{' '}
+              <span className="font-semibold text-amber-400">OUSL</span> — analysing business
+              processes, mapping As-Is and To-Be workflows, engineering requirements, and
+              translating organizational needs into secure digital solutions.
             </p>
 
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-7 max-w-2xl mx-auto lg:mx-0">
+              {quickStats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  className="min-h-20 rounded-2xl border border-white/20 bg-white/[0.025] px-3 py-3 flex flex-col items-center justify-center"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.45 + index * 0.08 }}
+                >
+                  <span
+                    className={`text-2xl font-bold ${
+                      index % 3 === 0
+                        ? 'text-amber-400'
+                        : index % 3 === 1
+                          ? 'text-blue-400'
+                          : 'text-emerald-400'
+                    }`}
+                  >
+                    {stat.value}
+                  </span>
+                  <span className="text-[11px] text-gray-500 mt-1 text-center">{stat.label}</span>
+                </motion.div>
+              ))}
+            </div>
+
             <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
-              {capabilities.map((capability) => (
+              {capabilities.map((capability, index) => (
                 <span
                   key={capability}
-                  className="px-3 py-1.5 rounded-full border border-blue-400/20 bg-blue-400/10 text-blue-200 text-xs font-medium"
+                  className={`px-3 py-1.5 rounded-full border text-xs font-medium ${
+                    index === 3
+                      ? 'border-amber-400/25 bg-amber-400/10 text-amber-300'
+                      : index === 4
+                        ? 'border-emerald-400/25 bg-emerald-400/10 text-emerald-300'
+                        : 'border-blue-400/20 bg-blue-400/10 text-blue-300'
+                  }`}
                 >
                   {capability}
                 </span>
@@ -91,7 +156,7 @@ export function HeroSection() {
                 onClick={() => scrollTo('#projects')}
                 className="px-7 py-3.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl font-semibold text-white text-sm hover:brightness-110 transition-all flex items-center justify-center gap-2"
               >
-                Explore Case Studies
+                View My Work
                 <ArrowDownIcon className="w-4 h-4" />
               </button>
               <a
@@ -132,7 +197,7 @@ export function HeroSection() {
                 className="relative p-1.5 rounded-full"
                 style={{ background: 'linear-gradient(135deg, #4da6ff, #c8a03c, #4da6ff)' }}
               >
-                <div className="rounded-full overflow-hidden bg-gradient-to-br from-blue-500/20 to-blue-700/20 flex items-center justify-center w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[360px] lg:h-[360px]">
+                <div className="rounded-full overflow-hidden bg-gradient-to-br from-blue-500/20 to-blue-700/20 flex items-center justify-center w-[290px] h-[290px] sm:w-[370px] sm:h-[370px] lg:w-[420px] lg:h-[420px] xl:w-[460px] xl:h-[460px]">
                   {!imageError ? (
                     <img
                       src="/portfolio/profile.jpeg"
@@ -183,7 +248,7 @@ export function HeroSection() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.1, duration: 0.5 }}
               >
-                BPMN · ERP · Systems
+                🏅 Presidential Medalist
               </motion.div>
 
               <div className="absolute -top-5 -right-5 w-10 h-10 bg-blue-400 rounded-full blur-md opacity-40 animate-pulse" />
