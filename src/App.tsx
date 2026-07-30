@@ -4,9 +4,10 @@ import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { StatsSection } from './components/StatsSection';
 import { SkillsSection } from './components/SkillsSection';
-import { GitHubSection } from './components/GitHubSection';
 import { ResumeSection } from './components/ResumeSection';
 import { ProjectsSection } from './components/ProjectsSection';
+import { ToolsTechnologiesSection } from './components/ToolsTechnologiesSection';
+import { FilmstripGallerySection } from './components/FilmstripGallerySection';
 import { ContactSection } from './components/ContactSection';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ThemeToggle } from './components/ThemeToggle';
@@ -34,7 +35,8 @@ export function App() {
         <SkillsSection />
         <ResumeSection />
         <ProjectsSection />
-        <GitHubSection />
+        <ToolsTechnologiesSection />
+        <FilmstripGallerySection />
         <ContactSection />
       </main>
 

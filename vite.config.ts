@@ -12,7 +12,7 @@ export default defineConfig({
       manifest: {
         name: 'Vihanga Rathnayake Portfolio',
         short_name: 'VihangaDev',
-        description: 'Portfolio of Vihanga Rathnayake - Software engineer, DevOps, and product builder.',
+        description: 'Portfolio of Vihanga Rathnayake - business systems analysis and digital transformation.',
         theme_color: '#0d1117',
         background_color: '#0d1117',
         display: 'standalone',

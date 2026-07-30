@@ -60,7 +60,7 @@ const tools = [
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-20 md:py-24 relative" aria-labelledby="skills-heading">
+    <section id="services" className="py-20 md:py-24 relative" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -69,10 +69,10 @@ export function SkillsSection() {
           className="text-center mb-12"
         >
           <p className="text-blue-400 font-mono text-xs tracking-[0.25em] uppercase mb-3">
-            Capability portfolio
+            Services &amp; capabilities
           </p>
-          <h2 id="skills-heading" className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-white mb-4">
-            Skills aligned to associate-level delivery
+          <h2 id="services-heading" className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-white mb-4">
+            What I can help deliver
           </h2>
           <p className="text-gray-400 max-w-3xl mx-auto">
             My focus is ownership of a defined workstream: discover, document, recommend,

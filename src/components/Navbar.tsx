@@ -4,12 +4,13 @@ import { MenuIcon, XIcon, DownloadIcon } from 'lucide-react';
 import { RippleButton } from './RippleButton';
 
 const navLinks = [
-  { label: 'Home',     href: '#home' },
-  { label: 'Profile',  href: '#about' },
-  { label: 'Capabilities', href: '#skills' },
-  { label: 'Experience', href: '#resume' },
-  { label: 'Case Studies', href: '#projects' },
-  { label: 'Contact',  href: '#contact' },
+  { label: 'Home', href: '#home' },
+  { label: 'Services', href: '#services' },
+  { label: 'Resume', href: '#resume' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export function Navbar() {
@@ -81,7 +82,7 @@ export function Navbar() {
             </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-4 xl:gap-8">
+            <div className="hidden lg:flex items-center gap-4 xl:gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
