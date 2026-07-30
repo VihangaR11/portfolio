@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   ArrowDownIcon,
   BriefcaseBusinessIcon,
   DownloadIcon,
   MapPinIcon,
-  WorkflowIcon,
 } from 'lucide-react';
 import { ParticleCanvas } from './ParticleCanvas';
 
@@ -17,14 +17,9 @@ const capabilities = [
   'Stakeholder Facilitation',
 ];
 
-const proofPoints = [
-  { value: '2', label: 'Honours degrees' },
-  { value: 'GovTech', label: 'Transformation exposure' },
-  { value: 'BPMN', label: 'Process modelling' },
-  { value: 'ERP', label: 'Functional pathway' },
-];
-
 export function HeroSection() {
+  const [imageError, setImageError] = useState(false);
+
   const scrollTo = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -45,8 +40,9 @@ export function HeroSection() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 w-full">
-        <div className="grid lg:grid-cols-[1.25fr_0.75fr] gap-12 lg:gap-20 items-center">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 xl:gap-20">
           <motion.div
+            className="flex-1 text-center lg:text-left order-2 lg:order-1"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65 }}
@@ -57,26 +53,29 @@ export function HeroSection() {
               <MapPinIcon className="w-3.5 h-3.5" />
             </div>
 
-            <p className="text-blue-400 font-mono text-sm tracking-[0.2em] uppercase mb-3">
-              Business systems · ERP · Digital transformation
+            <p className="text-blue-400 font-mono text-sm tracking-[0.2em] mb-3">
+              Hello, I&apos;m
             </p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold leading-[1.04] tracking-tight text-white mb-6">
-              I turn complex workflows into{' '}
-              <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-amber-400 bg-clip-text text-transparent">
-                practical digital systems.
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.08] tracking-tight mb-4">
+              <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-blue-700 bg-clip-text text-transparent">
+                Vihanga
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-amber-500 via-amber-400 to-blue-400 bg-clip-text text-transparent">
+                Rathnayake
               </span>
             </h1>
-            <p className="text-gray-300 text-lg sm:text-xl font-medium mb-4">
-              Vihanga Rathnayake — Business Systems Analyst & Digital Transformation Professional
+            <p className="text-gray-300 text-lg sm:text-xl font-light tracking-wide mb-5">
+              Business Systems Analyst & Digital Transformation Professional
             </p>
-            <p className="text-gray-400 max-w-2xl leading-relaxed mb-8">
+            <p className="text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-7">
               I analyse As-Is operations, facilitate stakeholder discovery, model To-Be
               processes, define clear requirements, and help teams move from organizational
               problems to secure, implementable solutions. My software engineering background
               helps me communicate effectively with both decision-makers and technical teams.
             </p>
 
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
               {capabilities.map((capability) => (
                 <span
                   key={capability}
@@ -87,7 +86,7 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <button
                 onClick={() => scrollTo('#projects')}
                 className="px-7 py-3.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl font-semibold text-white text-sm hover:brightness-110 transition-all flex items-center justify-center gap-2"
@@ -113,54 +112,84 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          <motion.aside
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="relative"
-            aria-label="Professional focus"
+          <motion.div
+            className="flex-shrink-0 order-1 lg:order-2"
+            initial={{ opacity: 0, scale: 0.86 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.85, delay: 0.15, ease: 'easeOut' }}
           >
-            <div className="absolute -inset-8 bg-blue-500/10 blur-3xl rounded-full" />
-            <div className="relative rounded-3xl border border-white/10 bg-[#0a1628]/90 backdrop-blur-xl p-6 sm:p-8 shadow-2xl">
-              <div className="flex items-center gap-3 mb-7">
-                <div className="w-11 h-11 rounded-xl bg-blue-500/15 border border-blue-400/20 flex items-center justify-center">
-                  <WorkflowIcon className="w-5 h-5 text-blue-300" />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">Target pathway</p>
-                  <h2 className="text-white font-semibold">Business analysis to transformation</h2>
+            <div className="relative">
+              <div
+                className="absolute -inset-4 rounded-full opacity-20 blur-xl"
+                style={{ background: 'conic-gradient(from 0deg, #4da6ff, #c8a03c, #4da6ff)' }}
+              />
+              <motion.div
+                className="absolute -inset-3 rounded-full border-2 border-dashed border-blue-400/20"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              />
+              <div
+                className="relative p-1.5 rounded-full"
+                style={{ background: 'linear-gradient(135deg, #4da6ff, #c8a03c, #4da6ff)' }}
+              >
+                <div className="rounded-full overflow-hidden bg-gradient-to-br from-blue-500/20 to-blue-700/20 flex items-center justify-center w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[360px] lg:h-[360px]">
+                  {!imageError ? (
+                    <img
+                      src="/portfolio/profile.jpeg"
+                      alt="Vihanga Rathnayake — Business Systems Analyst"
+                      className="w-full h-full object-cover object-top rounded-full"
+                      width="360"
+                      height="360"
+                      fetchPriority="high"
+                      loading="eager"
+                      onError={() => setImageError(true)}
+                    />
+                  ) : (
+                    <div className="text-center">
+                      <span className="text-7xl font-extrabold bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent block">
+                        VR
+                      </span>
+                      <p className="text-xs text-gray-400 mt-2 tracking-widest font-mono">
+                        VIHANGA RATHNAYAKE
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
 
-              <div className="space-y-3 mb-7">
-                {[
-                  'Associate Business Analyst',
-                  'Business / Systems Analyst',
-                  'Associate Functional Consultant',
-                  'Implementation or Solutions Analyst',
-                ].map((role, index) => (
-                  <div
-                    key={role}
-                    className="flex items-center gap-3 p-3 rounded-xl border border-white/10 bg-white/[0.03]"
-                  >
-                    <span className="w-7 h-7 rounded-lg bg-amber-400/10 text-amber-300 text-xs font-mono flex items-center justify-center">
-                      0{index + 1}
-                    </span>
-                    <span className="text-sm text-gray-300">{role}</span>
-                  </div>
-                ))}
-              </div>
+              <motion.div
+                className="absolute -bottom-2 -right-2 flex items-center gap-2 px-3 py-2 rounded-xl border border-emerald-400/40 bg-[#081426]/95 text-emerald-400 text-xs font-semibold backdrop-blur-xl"
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.5 }}
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                Open to work
+              </motion.div>
 
-              <div className="grid grid-cols-2 gap-3">
-                {proofPoints.map((point) => (
-                  <div key={point.label} className="rounded-xl bg-white/[0.035] border border-white/10 p-3">
-                    <div className="text-blue-300 font-bold text-sm">{point.value}</div>
-                    <div className="text-gray-500 text-[11px] mt-1">{point.label}</div>
-                  </div>
-                ))}
-              </div>
+              <motion.div
+                className="absolute -top-2 -left-2 flex items-center gap-2 px-3 py-2 rounded-xl border border-blue-400/30 bg-[#081426]/95 text-blue-300 text-xs font-medium backdrop-blur-xl"
+                initial={{ opacity: 0, scale: 0.8, y: -10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.5 }}
+              >
+                <MapPinIcon className="w-3 h-3" />
+                Sri Lanka
+              </motion.div>
+
+              <motion.div
+                className="absolute top-1/2 -right-2 sm:-right-8 -translate-y-1/2 px-3 py-2 rounded-xl border border-amber-400/30 bg-[#081426]/95 text-amber-300 text-xs font-medium whitespace-nowrap backdrop-blur-xl"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.1, duration: 0.5 }}
+              >
+                BPMN · ERP · Systems
+              </motion.div>
+
+              <div className="absolute -top-5 -right-5 w-10 h-10 bg-blue-400 rounded-full blur-md opacity-40 animate-pulse" />
+              <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-amber-500 rounded-full blur-md opacity-40 animate-pulse" />
             </div>
-          </motion.aside>
+          </motion.div>
         </div>
       </div>
     </section>
