@@ -21,10 +21,12 @@ interface Photo {
   year: string;
 }
 
+const getPhotoSrc = (name: string) => `${import.meta.env.BASE_URL}gallery/${name}`;
+
 const photos: Photo[] = [
   {
     id: 1,
-    src: `${import.meta.env.BASE_URL}gallery/speaking1.webp`,
+    src: getPhotoSrc('speaking1.webp'),
     caption: 'Public Speaking',
     subcaption: 'Association of Computing Students — 2025',
     category: 'event',
@@ -32,7 +34,7 @@ const photos: Photo[] = [
   },
   {
     id: 2,
-    src: `${import.meta.env.BASE_URL}gallery/campus1.jpg`,
+    src: getPhotoSrc('placeholder.svg'),
     caption: 'Campus Life',
     subcaption: 'University of Sri Jayewardenepura',
     category: 'university',
@@ -40,7 +42,7 @@ const photos: Photo[] = [
   },
   {
     id: 3,
-    src: `${import.meta.env.BASE_URL}gallery/team1.jpg`,
+    src: getPhotoSrc('placeholder.svg'),
     caption: 'ACS Team',
     subcaption: 'Association of Computing Students',
     category: 'team',
@@ -48,7 +50,7 @@ const photos: Photo[] = [
   },
   {
     id: 4,
-    src: `${import.meta.env.BASE_URL}gallery/event1.jpg`,
+    src: getPhotoSrc('placeholder.svg'),
     caption: 'G17 Global',
     subcaption: 'University Ambassador Programme',
     category: 'event',
@@ -56,7 +58,7 @@ const photos: Photo[] = [
   },
   {
     id: 5,
-    src: `${import.meta.env.BASE_URL}gallery/personal1.jpg`,
+    src: getPhotoSrc('placeholder.svg'),
     caption: 'Personal Moments',
     subcaption: 'Buttala, Sri Lanka',
     category: 'personal',
@@ -64,7 +66,7 @@ const photos: Photo[] = [
   },
   {
     id: 6,
-    src: `${import.meta.env.BASE_URL}gallery/event2.jpg`,
+    src: getPhotoSrc('placeholder.svg'),
     caption: 'Solar Alliance',
     subcaption: 'International Solar Alliance — Liaison',
     category: 'event',
@@ -72,7 +74,7 @@ const photos: Photo[] = [
   },
   {
     id: 7,
-    src: `${import.meta.env.BASE_URL}gallery/team2.jpg`,
+    src: getPhotoSrc('placeholder.svg'),
     caption: 'Flair Club',
     subcaption: 'Secretary — USJ Flair Club',
     category: 'team',
@@ -80,7 +82,7 @@ const photos: Photo[] = [
   },
   {
     id: 8,
-    src: `${import.meta.env.BASE_URL}gallery/campus2.jpg`,
+    src: getPhotoSrc('placeholder.svg'),
     caption: 'Study Sessions',
     subcaption: 'Open University of Sri Lanka',
     category: 'university',
@@ -88,7 +90,7 @@ const photos: Photo[] = [
   },
   {
     id: 9,
-    src: `${import.meta.env.BASE_URL}gallery/personal2.jpg`,
+    src: getPhotoSrc('placeholder.svg'),
     caption: 'Tabla Performance',
     subcaption: 'Bhathkande Sangeet Vidyapith',
     category: 'personal',
@@ -96,7 +98,7 @@ const photos: Photo[] = [
   },
   {
     id: 10,
-    src: `${import.meta.env.BASE_URL}gallery/event3.jpg`,
+    src: getPhotoSrc('placeholder.svg'),
     caption: 'Award Ceremony',
     subcaption: 'Environmental Pioneer Medal — 2017',
     category: 'event',
@@ -322,7 +324,8 @@ export function FilmstripGallerySection() {
                     alt={lightbox.caption}
                     className="w-full h-full object-cover"
                     onError={e => {
-                      (e.currentTarget as HTMLImageElement).style.display = 'none';
+                      const target = e.currentTarget as HTMLImageElement;
+                      target.src = `${import.meta.env.BASE_URL}gallery/placeholder.svg`;
                     }}
                   />
                   {/* Cinematic overlay */}
@@ -449,7 +452,8 @@ function FilmFrame({ photo, index, isHovered, onHover, onLeave, onClick }: FilmF
               transition: 'filter 0.3s ease',
             }}
             onError={e => {
-              (e.currentTarget as HTMLImageElement).style.display = 'none';
+              const target = e.currentTarget as HTMLImageElement;
+              target.src = `${import.meta.env.BASE_URL}gallery/placeholder.svg`;
             }}
           />
 
