@@ -24,7 +24,7 @@ interface Photo {
 const photos: Photo[] = [
   {
     id: 1,
-    src: `"D:\My projects\vsr portfolio\portfolio-enhanced\public\gallery\speaking1.webp"`,
+    src: `${import.meta.env.BASE_URL}gallery/speaking1.webp`,
     caption: 'Public Speaking',
     subcaption: 'Association of Computing Students — 2025',
     category: 'event',
