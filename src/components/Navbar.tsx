@@ -51,7 +51,7 @@ export function Navbar() {
 
   const handleDownloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/portfolio/portfolio/CV_Vihanga%20Rathnayake.pdf';
+    link.href = '/portfolio/portfolio/Vihanga%20Rathnayake_CV.pdf';
     link.download = 'Vihanga_Rathnayake_CV.pdf';
     document.body.appendChild(link);
     link.click();

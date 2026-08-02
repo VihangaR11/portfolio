@@ -198,7 +198,7 @@ export function AboutSection() {
               </ul>
 
               <a
-                href="/portfolio/portfolio/CV_Vihanga%20Rathnayake.pdf"
+                href="/portfolio/portfolio/Vihanga%20Rathnayake_CV.pdf"
                 download
                 className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-400 via-blue-500 to-amber-400 text-[#06101f] font-bold hover:brightness-110 transition-all"
               >

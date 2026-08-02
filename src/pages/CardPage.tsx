@@ -272,7 +272,7 @@ export default function CardPage() {
           {/* Action buttons */}
           <div className="px-6 pb-8 flex gap-3">
             <a
-              href="/portfolio/portfolio/CV_Vihanga%20Rathnayake.pdf"
+              href="/portfolio/portfolio/Vihanga%20Rathnayake_CV.pdf"
               download
               className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm text-white transition-all hover:brightness-110"
               style={{ background: 'linear-gradient(135deg, #1e6bc4, #1557a0)' }}

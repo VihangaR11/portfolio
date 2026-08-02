@@ -160,7 +160,7 @@ export function HeroSection() {
                 <ArrowDownIcon className="w-4 h-4" />
               </button>
               <a
-                href="/portfolio/portfolio/CV_Vihanga%20Rathnayake.pdf"
+                href="/portfolio/portfolio/Vihanga%20Rathnayake_CV.pdf"
                 download
                 className="px-7 py-3.5 border border-white/15 bg-white/5 rounded-xl font-semibold text-white text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2"
               >

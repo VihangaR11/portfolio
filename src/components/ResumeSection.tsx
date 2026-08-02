@@ -635,7 +635,7 @@ export function ResumeSection() {
         {/* ── Download CV ── */}
         <motion.div className="text-center mt-12"
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-          <a href="/portfolio/portfolio/CV_Vihanga%20Rathnayake.pdf" download
+          <a href="/portfolio/portfolio/Vihanga%20Rathnayake_CV.pdf" download
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-blue-500/25"
             style={{ background: 'linear-gradient(135deg, #4da6ff, #c8a03c)' }}>
             <CalendarIcon className="w-4 h-4" />
